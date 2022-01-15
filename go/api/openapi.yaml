@@ -1,0 +1,2630 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: dave@mudsite.com
+  description: Reverse Engineered API for Aura Frames
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Aura Frame API - Unofficial
+  version: 0.0.1
+servers:
+- url: https://api.pushd.com/v5
+security:
+- TokenAuth: []
+  UserId: []
+tags:
+- description: Authentication
+  name: auth
+- description: Frames
+  name: frames
+paths:
+  /login.json:
+    post:
+      operationId: login
+      parameters:
+      - explode: false
+        in: header
+        name: x-device-identifier
+        required: false
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: x-client-device-id
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+        description: Login Information
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+          description: Success
+      summary: Login to Aura Frames
+      tags:
+      - auth
+  /frames.json:
+    get:
+      operationId: getFrames
+      parameters:
+      - explode: true
+        in: query
+        name: include_shared_albums
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Frames'
+          description: Success
+      security:
+      - sessionId: []
+      summary: Access to an Aura Frame
+      tags:
+      - frames
+components:
+  schemas:
+    Asset:
+      example:
+        video_clip_start: video_clip_start
+        md5_hash: md5_hash
+        rotation_cw: rotation_cw
+        taken_at_user_override_at: taken_at_user_override_at
+        is_subscription: true
+        user_portrait_rect: user_portrait_rect
+        exif_orientation: exif_orientation
+        local_identifier: local_identifier
+        ios_media_subtypes: ios_media_subtypes
+        id: id
+        portrait_url: portrait_url
+        portrait_rect: portrait_rect
+        landscape_url: landscape_url
+        selected: ""
+        height: height
+        user_landscape_rect: user_landscape_rect
+        unglacierable: ""
+        video_clipped_by_user_at: video_clipped_by_user_at
+        location_name: location_name
+        data_uti: data_uti
+        glaciered_at: glaciered_at
+        panorama: ""
+        user_id: user_id
+        uploaded_at: uploaded_at
+        taken_at: taken_at
+        auto_landscape_16_10_rect: auto_landscape_16_10_rect
+        favorite: ""
+        upload_priority: upload_priority
+        landscape_rect: landscape_rect
+        duration_unclipped: duration_unclipped
+        horizontal_accuracy: horizontal_accuracy
+        good_resolution: ""
+        thumbnail_url: thumbnail_url
+        auto_portrait_4_5_rect: auto_portrait_4_5_rect
+        duration: duration
+        user_landscape_16_10_rect: user_landscape_16_10_rect
+        video_url: video_url
+        raw_file_name: raw_file_name
+        original_file_name: original_file_name
+        burst_selection_types: burst_selection_types
+        orientation: orientation
+        landscape_16_10_url: landscape_16_10_url
+        burst_id: burst_id
+        file_name: file_name
+        handled_at: handled_at
+        live_photo_off: live_photo_off
+        represents_burst: represents_burst
+        user_portrait_4_5_rect: user_portrait_4_5_rect
+        video_clip_excludes_audio: video_clip_excludes_audio
+        duplicate_of_id: duplicate_of_id
+        portrait_4_5_url: portrait_4_5_url
+        hdr: ""
+        created_at_on_client: created_at_on_client
+        video_file_name: video_file_name
+        width: width
+        is_live: is_live
+        location: location
+        source_id: source_id
+        user:
+          attribution_string: attribution_string
+          attribution_id: attribution_id
+          updated_at: updated_at
+          name: name
+          avatar_file_name: avatar_file_name
+          created_at: created_at
+          id: id
+          short_id: short_id
+          test_account: test_account
+          email: email
+          latest_app_version: latest_app_version
+          show_push_prompt: true
+      properties:
+        id:
+          type: string
+        user_id:
+          type: string
+        thumbnail_url:
+          type: string
+        portrait_url:
+          type: string
+        landscape_url:
+          type: string
+        landscape_16_10_url:
+          type: string
+        portrait_4_5_url:
+          type: string
+        video_url:
+          type: string
+        landscape_rect:
+          type: string
+        portrait_rect:
+          type: string
+        user_landscape_rect:
+          type: string
+        user_portrait_rect:
+          type: string
+        auto_landscape_16_10_rect:
+          type: string
+        user_landscape_16_10_rect:
+          type: string
+        auto_portrait_4_5_rect:
+          type: string
+        user_portrait_4_5_rect:
+          type: string
+        exif_orientation:
+          type: string
+        handled_at:
+          type: string
+        uploaded_at:
+          type: string
+        good_resolution:
+          type: bool
+        source_id:
+          type: string
+        duplicate_of_id:
+          type: string
+        rotation_cw:
+          type: string
+        location_name:
+          type: string
+        md5_hash:
+          type: string
+        is_subscription:
+          type: boolean
+        glaciered_at:
+          type: string
+        unglacierable:
+          type: bool
+        duration:
+          type: string
+        live_photo_off:
+          type: string
+        local_identifier:
+          type: string
+        created_at_on_client:
+          type: string
+        selected:
+          type: bool
+        file_name:
+          type: string
+        raw_file_name:
+          type: string
+        video_file_name:
+          type: string
+        width:
+          type: string
+        height:
+          type: string
+        taken_at:
+          type: string
+        horizontal_accuracy:
+          type: string
+        favorite:
+          type: bool
+        orientation:
+          type: string
+        hdr:
+          type: bool
+        panorama:
+          type: bool
+        is_live:
+          type: string
+        burst_id:
+          type: string
+        burst_selection_types:
+          type: string
+        represents_burst:
+          type: string
+        data_uti:
+          type: string
+        original_file_name:
+          type: string
+        upload_priority:
+          type: string
+        ios_media_subtypes:
+          type: string
+        taken_at_user_override_at:
+          type: string
+        duration_unclipped:
+          type: string
+        video_clip_start:
+          type: string
+        video_clip_excludes_audio:
+          type: string
+        video_clipped_by_user_at:
+          type: string
+        location:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+      type: object
+    ContributorTokens:
+      example:
+        expires_at: expires_at
+        updated_at: updated_at
+        contributor_name: contributor_name
+        created_at: created_at
+        phone_number: phone_number
+        email: email
+        frame_id: frame_id
+      properties:
+        email:
+          type: string
+        phone_number:
+          type: string
+        expires_at:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        frame_id:
+          type: string
+        contributor_name:
+          type: string
+      type: object
+    CurrentUser:
+      example:
+        attribution_string: attribution_string
+        avatar_file_name: avatar_file_name
+        created_at: created_at
+        verbose_logging_enabled: true
+        locale: locale
+        auto_upload_off: true
+        has_access_to_new_google_photos: true
+        features:
+        - id: id
+        - id: id
+        google_photos_disabled: google_photos_disabled
+        thanks_launched: true
+        attribution_id: attribution_id
+        billing_info: billing_info
+        smart_suggestions_off: true
+        updated_at: updated_at
+        smart_albums_off: true
+        charity_subscriptions_launched: true
+        tooltip_add_photos_seen: true
+        id: id
+        test_account: test_account
+        confirmed_email: confirmed_email
+        eligible_for_app_review_prompt: true
+        email: email
+        subscriptions_launched: true
+        live_photos_launched: true
+        tooltip_added_photos_seen: true
+        tooltip_settings_seen: true
+        admin_account: admin_account
+        short_id: short_id
+        show_push_prompt: true
+        unconfirmed_email: unconfirmed_email
+        has_frame: true
+        recurly_account_code: recurly_account_code
+        tooltip_gestures_seen: true
+        current_source_id: current_source_id
+        name: name
+        tooltip_inbox_seen: true
+        tooltip_manage_frames_seen: true
+        auth_token: auth_token
+        latest_app_version: latest_app_version
+        print_subscriptions_launched: true
+        warn_smart_albums_deprecated: true
+      properties:
+        admin_account:
+          type: string
+        attribution_id:
+          type: string
+        attribution_string:
+          type: string
+        auth_token:
+          type: string
+        auto_upload_off:
+          type: boolean
+        avatar_file_name:
+          type: string
+        billing_info:
+          type: string
+        charity_subscriptions_launched:
+          type: boolean
+        confirmed_email:
+          type: string
+        created_at:
+          type: string
+        current_source_id:
+          type: string
+        eligible_for_app_review_prompt:
+          type: boolean
+        email:
+          type: string
+        features:
+          items:
+            $ref: '#/components/schemas/Features'
+          type: array
+        google_photos_disabled:
+          type: string
+        has_access_to_new_google_photos:
+          type: boolean
+        has_frame:
+          type: boolean
+        id:
+          type: string
+        latest_app_version:
+          type: string
+        live_photos_launched:
+          type: boolean
+        locale:
+          type: string
+        name:
+          type: string
+        print_subscriptions_launched:
+          type: boolean
+        recurly_account_code:
+          type: string
+        short_id:
+          type: string
+        show_push_prompt:
+          type: boolean
+        smart_albums_off:
+          type: boolean
+        smart_suggestions_off:
+          type: boolean
+        subscriptions_launched:
+          type: boolean
+        test_account:
+          type: string
+        thanks_launched:
+          type: boolean
+        tooltip_add_photos_seen:
+          type: boolean
+        tooltip_added_photos_seen:
+          type: boolean
+        tooltip_gestures_seen:
+          type: boolean
+        tooltip_inbox_seen:
+          type: boolean
+        tooltip_manage_frames_seen:
+          type: boolean
+        tooltip_settings_seen:
+          type: boolean
+        unconfirmed_email:
+          type: string
+        updated_at:
+          type: string
+        verbose_logging_enabled:
+          type: boolean
+        warn_smart_albums_deprecated:
+          type: boolean
+      type: object
+    Features:
+      example:
+        id: id
+      properties:
+        id:
+          type: string
+      type: object
+    FeedItem:
+      example:
+        metadata:
+          date: date
+          attribution: attribution
+          location: location
+          pair_reasons: pair_reasons
+        assets:
+        - video_clip_start: video_clip_start
+          md5_hash: md5_hash
+          rotation_cw: rotation_cw
+          taken_at_user_override_at: taken_at_user_override_at
+          is_subscription: true
+          user_portrait_rect: user_portrait_rect
+          exif_orientation: exif_orientation
+          local_identifier: local_identifier
+          ios_media_subtypes: ios_media_subtypes
+          id: id
+          portrait_url: portrait_url
+          portrait_rect: portrait_rect
+          landscape_url: landscape_url
+          selected: ""
+          height: height
+          user_landscape_rect: user_landscape_rect
+          unglacierable: ""
+          video_clipped_by_user_at: video_clipped_by_user_at
+          location_name: location_name
+          data_uti: data_uti
+          glaciered_at: glaciered_at
+          panorama: ""
+          user_id: user_id
+          uploaded_at: uploaded_at
+          taken_at: taken_at
+          auto_landscape_16_10_rect: auto_landscape_16_10_rect
+          favorite: ""
+          upload_priority: upload_priority
+          landscape_rect: landscape_rect
+          duration_unclipped: duration_unclipped
+          horizontal_accuracy: horizontal_accuracy
+          good_resolution: ""
+          thumbnail_url: thumbnail_url
+          auto_portrait_4_5_rect: auto_portrait_4_5_rect
+          duration: duration
+          user_landscape_16_10_rect: user_landscape_16_10_rect
+          video_url: video_url
+          raw_file_name: raw_file_name
+          original_file_name: original_file_name
+          burst_selection_types: burst_selection_types
+          orientation: orientation
+          landscape_16_10_url: landscape_16_10_url
+          burst_id: burst_id
+          file_name: file_name
+          handled_at: handled_at
+          live_photo_off: live_photo_off
+          represents_burst: represents_burst
+          user_portrait_4_5_rect: user_portrait_4_5_rect
+          video_clip_excludes_audio: video_clip_excludes_audio
+          duplicate_of_id: duplicate_of_id
+          portrait_4_5_url: portrait_4_5_url
+          hdr: ""
+          created_at_on_client: created_at_on_client
+          video_file_name: video_file_name
+          width: width
+          is_live: is_live
+          location: location
+          source_id: source_id
+          user:
+            attribution_string: attribution_string
+            attribution_id: attribution_id
+            updated_at: updated_at
+            name: name
+            avatar_file_name: avatar_file_name
+            created_at: created_at
+            id: id
+            short_id: short_id
+            test_account: test_account
+            email: email
+            latest_app_version: latest_app_version
+            show_push_prompt: true
+        - video_clip_start: video_clip_start
+          md5_hash: md5_hash
+          rotation_cw: rotation_cw
+          taken_at_user_override_at: taken_at_user_override_at
+          is_subscription: true
+          user_portrait_rect: user_portrait_rect
+          exif_orientation: exif_orientation
+          local_identifier: local_identifier
+          ios_media_subtypes: ios_media_subtypes
+          id: id
+          portrait_url: portrait_url
+          portrait_rect: portrait_rect
+          landscape_url: landscape_url
+          selected: ""
+          height: height
+          user_landscape_rect: user_landscape_rect
+          unglacierable: ""
+          video_clipped_by_user_at: video_clipped_by_user_at
+          location_name: location_name
+          data_uti: data_uti
+          glaciered_at: glaciered_at
+          panorama: ""
+          user_id: user_id
+          uploaded_at: uploaded_at
+          taken_at: taken_at
+          auto_landscape_16_10_rect: auto_landscape_16_10_rect
+          favorite: ""
+          upload_priority: upload_priority
+          landscape_rect: landscape_rect
+          duration_unclipped: duration_unclipped
+          horizontal_accuracy: horizontal_accuracy
+          good_resolution: ""
+          thumbnail_url: thumbnail_url
+          auto_portrait_4_5_rect: auto_portrait_4_5_rect
+          duration: duration
+          user_landscape_16_10_rect: user_landscape_16_10_rect
+          video_url: video_url
+          raw_file_name: raw_file_name
+          original_file_name: original_file_name
+          burst_selection_types: burst_selection_types
+          orientation: orientation
+          landscape_16_10_url: landscape_16_10_url
+          burst_id: burst_id
+          file_name: file_name
+          handled_at: handled_at
+          live_photo_off: live_photo_off
+          represents_burst: represents_burst
+          user_portrait_4_5_rect: user_portrait_4_5_rect
+          video_clip_excludes_audio: video_clip_excludes_audio
+          duplicate_of_id: duplicate_of_id
+          portrait_4_5_url: portrait_4_5_url
+          hdr: ""
+          created_at_on_client: created_at_on_client
+          video_file_name: video_file_name
+          width: width
+          is_live: is_live
+          location: location
+          source_id: source_id
+          user:
+            attribution_string: attribution_string
+            attribution_id: attribution_id
+            updated_at: updated_at
+            name: name
+            avatar_file_name: avatar_file_name
+            created_at: created_at
+            id: id
+            short_id: short_id
+            test_account: test_account
+            email: email
+            latest_app_version: latest_app_version
+            show_push_prompt: true
+        message: message
+        stick_for: stick_for
+      properties:
+        assets:
+          items:
+            $ref: '#/components/schemas/Asset'
+          type: array
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        message:
+          type: string
+        stick_for:
+          type: string
+      type: object
+    FrameEnvironment:
+      example:
+        updated_at: updated_at
+        last_online_at: last_online_at
+        created_at: created_at
+        id: id
+        frame_id: frame_id
+      properties:
+        id:
+          type: string
+        frame_id:
+          type: string
+        last_online_at:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+      type: object
+    Frame:
+      example:
+        auto_brightness: true
+        sense_motion: true
+        matting_color: matting_color
+        scheduled_display_on_at: scheduled_display_on_at
+        features:
+        - features
+        - features
+        thanks_on: true
+        is_handling: true
+        id: id
+        software_version: software_version
+        last_impression_at: last_impression_at
+        control_type: control_type
+        wifi_network: wifi_network
+        gift_billing_hint: gift_billing_hint
+        frame_queue_url: frame_queue_url
+        scheduled_display_off_at: scheduled_display_off_at
+        representative_asset_id: representative_asset_id
+        playlists:
+        - playlists
+        - playlists
+        frame_type: frame_type
+        current_print_set: current_print_set
+        deleted_at: deleted_at
+        auto_processed_playlist_ids:
+        - auto_processed_playlist_ids
+        - auto_processed_playlist_ids
+        recent_assets:
+        - video_clip_start: video_clip_start
+          md5_hash: md5_hash
+          rotation_cw: rotation_cw
+          taken_at_user_override_at: taken_at_user_override_at
+          is_subscription: true
+          user_portrait_rect: user_portrait_rect
+          exif_orientation: exif_orientation
+          local_identifier: local_identifier
+          ios_media_subtypes: ios_media_subtypes
+          id: id
+          portrait_url: portrait_url
+          portrait_rect: portrait_rect
+          landscape_url: landscape_url
+          selected: ""
+          height: height
+          user_landscape_rect: user_landscape_rect
+          unglacierable: ""
+          video_clipped_by_user_at: video_clipped_by_user_at
+          location_name: location_name
+          data_uti: data_uti
+          glaciered_at: glaciered_at
+          panorama: ""
+          user_id: user_id
+          uploaded_at: uploaded_at
+          taken_at: taken_at
+          auto_landscape_16_10_rect: auto_landscape_16_10_rect
+          favorite: ""
+          upload_priority: upload_priority
+          landscape_rect: landscape_rect
+          duration_unclipped: duration_unclipped
+          horizontal_accuracy: horizontal_accuracy
+          good_resolution: ""
+          thumbnail_url: thumbnail_url
+          auto_portrait_4_5_rect: auto_portrait_4_5_rect
+          duration: duration
+          user_landscape_16_10_rect: user_landscape_16_10_rect
+          video_url: video_url
+          raw_file_name: raw_file_name
+          original_file_name: original_file_name
+          burst_selection_types: burst_selection_types
+          orientation: orientation
+          landscape_16_10_url: landscape_16_10_url
+          burst_id: burst_id
+          file_name: file_name
+          handled_at: handled_at
+          live_photo_off: live_photo_off
+          represents_burst: represents_burst
+          user_portrait_4_5_rect: user_portrait_4_5_rect
+          video_clip_excludes_audio: video_clip_excludes_audio
+          duplicate_of_id: duplicate_of_id
+          portrait_4_5_url: portrait_4_5_url
+          hdr: ""
+          created_at_on_client: created_at_on_client
+          video_file_name: video_file_name
+          width: width
+          is_live: is_live
+          location: location
+          source_id: source_id
+          user:
+            attribution_string: attribution_string
+            attribution_id: attribution_id
+            updated_at: updated_at
+            name: name
+            avatar_file_name: avatar_file_name
+            created_at: created_at
+            id: id
+            short_id: short_id
+            test_account: test_account
+            email: email
+            latest_app_version: latest_app_version
+            show_push_prompt: true
+        - video_clip_start: video_clip_start
+          md5_hash: md5_hash
+          rotation_cw: rotation_cw
+          taken_at_user_override_at: taken_at_user_override_at
+          is_subscription: true
+          user_portrait_rect: user_portrait_rect
+          exif_orientation: exif_orientation
+          local_identifier: local_identifier
+          ios_media_subtypes: ios_media_subtypes
+          id: id
+          portrait_url: portrait_url
+          portrait_rect: portrait_rect
+          landscape_url: landscape_url
+          selected: ""
+          height: height
+          user_landscape_rect: user_landscape_rect
+          unglacierable: ""
+          video_clipped_by_user_at: video_clipped_by_user_at
+          location_name: location_name
+          data_uti: data_uti
+          glaciered_at: glaciered_at
+          panorama: ""
+          user_id: user_id
+          uploaded_at: uploaded_at
+          taken_at: taken_at
+          auto_landscape_16_10_rect: auto_landscape_16_10_rect
+          favorite: ""
+          upload_priority: upload_priority
+          landscape_rect: landscape_rect
+          duration_unclipped: duration_unclipped
+          horizontal_accuracy: horizontal_accuracy
+          good_resolution: ""
+          thumbnail_url: thumbnail_url
+          auto_portrait_4_5_rect: auto_portrait_4_5_rect
+          duration: duration
+          user_landscape_16_10_rect: user_landscape_16_10_rect
+          video_url: video_url
+          raw_file_name: raw_file_name
+          original_file_name: original_file_name
+          burst_selection_types: burst_selection_types
+          orientation: orientation
+          landscape_16_10_url: landscape_16_10_url
+          burst_id: burst_id
+          file_name: file_name
+          handled_at: handled_at
+          live_photo_off: live_photo_off
+          represents_burst: represents_burst
+          user_portrait_4_5_rect: user_portrait_4_5_rect
+          video_clip_excludes_audio: video_clip_excludes_audio
+          duplicate_of_id: duplicate_of_id
+          portrait_4_5_url: portrait_4_5_url
+          hdr: ""
+          created_at_on_client: created_at_on_client
+          video_file_name: video_file_name
+          width: width
+          is_live: is_live
+          location: location
+          source_id: source_id
+          user:
+            attribution_string: attribution_string
+            attribution_id: attribution_id
+            updated_at: updated_at
+            name: name
+            avatar_file_name: avatar_file_name
+            created_at: created_at
+            id: id
+            short_id: short_id
+            test_account: test_account
+            email: email
+            latest_app_version: latest_app_version
+            show_push_prompt: true
+        volume: volume
+        user_id: user_id
+        calibrations_last_modified_at: calibrations_last_modified_at
+        name: name
+        slideshow_auto: true
+        default_speed: default_speed
+        gestures_on: true
+        child_albums:
+        - child_albums
+        - child_albums
+        slideshow_interval: slideshow_interval
+        hw_android_version: hw_android_version
+        cold_boot_at: cold_boot_at
+        created_at: created_at
+        description: description
+        updated_at_on_client: updated_at_on_client
+        locale: locale
+        last_feed_item:
+          metadata:
+            date: date
+            attribution: attribution
+            location: location
+            pair_reasons: pair_reasons
+          assets:
+          - video_clip_start: video_clip_start
+            md5_hash: md5_hash
+            rotation_cw: rotation_cw
+            taken_at_user_override_at: taken_at_user_override_at
+            is_subscription: true
+            user_portrait_rect: user_portrait_rect
+            exif_orientation: exif_orientation
+            local_identifier: local_identifier
+            ios_media_subtypes: ios_media_subtypes
+            id: id
+            portrait_url: portrait_url
+            portrait_rect: portrait_rect
+            landscape_url: landscape_url
+            selected: ""
+            height: height
+            user_landscape_rect: user_landscape_rect
+            unglacierable: ""
+            video_clipped_by_user_at: video_clipped_by_user_at
+            location_name: location_name
+            data_uti: data_uti
+            glaciered_at: glaciered_at
+            panorama: ""
+            user_id: user_id
+            uploaded_at: uploaded_at
+            taken_at: taken_at
+            auto_landscape_16_10_rect: auto_landscape_16_10_rect
+            favorite: ""
+            upload_priority: upload_priority
+            landscape_rect: landscape_rect
+            duration_unclipped: duration_unclipped
+            horizontal_accuracy: horizontal_accuracy
+            good_resolution: ""
+            thumbnail_url: thumbnail_url
+            auto_portrait_4_5_rect: auto_portrait_4_5_rect
+            duration: duration
+            user_landscape_16_10_rect: user_landscape_16_10_rect
+            video_url: video_url
+            raw_file_name: raw_file_name
+            original_file_name: original_file_name
+            burst_selection_types: burst_selection_types
+            orientation: orientation
+            landscape_16_10_url: landscape_16_10_url
+            burst_id: burst_id
+            file_name: file_name
+            handled_at: handled_at
+            live_photo_off: live_photo_off
+            represents_burst: represents_burst
+            user_portrait_4_5_rect: user_portrait_4_5_rect
+            video_clip_excludes_audio: video_clip_excludes_audio
+            duplicate_of_id: duplicate_of_id
+            portrait_4_5_url: portrait_4_5_url
+            hdr: ""
+            created_at_on_client: created_at_on_client
+            video_file_name: video_file_name
+            width: width
+            is_live: is_live
+            location: location
+            source_id: source_id
+            user:
+              attribution_string: attribution_string
+              attribution_id: attribution_id
+              updated_at: updated_at
+              name: name
+              avatar_file_name: avatar_file_name
+              created_at: created_at
+              id: id
+              short_id: short_id
+              test_account: test_account
+              email: email
+              latest_app_version: latest_app_version
+              show_push_prompt: true
+          - video_clip_start: video_clip_start
+            md5_hash: md5_hash
+            rotation_cw: rotation_cw
+            taken_at_user_override_at: taken_at_user_override_at
+            is_subscription: true
+            user_portrait_rect: user_portrait_rect
+            exif_orientation: exif_orientation
+            local_identifier: local_identifier
+            ios_media_subtypes: ios_media_subtypes
+            id: id
+            portrait_url: portrait_url
+            portrait_rect: portrait_rect
+            landscape_url: landscape_url
+            selected: ""
+            height: height
+            user_landscape_rect: user_landscape_rect
+            unglacierable: ""
+            video_clipped_by_user_at: video_clipped_by_user_at
+            location_name: location_name
+            data_uti: data_uti
+            glaciered_at: glaciered_at
+            panorama: ""
+            user_id: user_id
+            uploaded_at: uploaded_at
+            taken_at: taken_at
+            auto_landscape_16_10_rect: auto_landscape_16_10_rect
+            favorite: ""
+            upload_priority: upload_priority
+            landscape_rect: landscape_rect
+            duration_unclipped: duration_unclipped
+            horizontal_accuracy: horizontal_accuracy
+            good_resolution: ""
+            thumbnail_url: thumbnail_url
+            auto_portrait_4_5_rect: auto_portrait_4_5_rect
+            duration: duration
+            user_landscape_16_10_rect: user_landscape_16_10_rect
+            video_url: video_url
+            raw_file_name: raw_file_name
+            original_file_name: original_file_name
+            burst_selection_types: burst_selection_types
+            orientation: orientation
+            landscape_16_10_url: landscape_16_10_url
+            burst_id: burst_id
+            file_name: file_name
+            handled_at: handled_at
+            live_photo_off: live_photo_off
+            represents_burst: represents_burst
+            user_portrait_4_5_rect: user_portrait_4_5_rect
+            video_clip_excludes_audio: video_clip_excludes_audio
+            duplicate_of_id: duplicate_of_id
+            portrait_4_5_url: portrait_4_5_url
+            hdr: ""
+            created_at_on_client: created_at_on_client
+            video_file_name: video_file_name
+            width: width
+            is_live: is_live
+            location: location
+            source_id: source_id
+            user:
+              attribution_string: attribution_string
+              attribution_id: attribution_id
+              updated_at: updated_at
+              name: name
+              avatar_file_name: avatar_file_name
+              created_at: created_at
+              id: id
+              short_id: short_id
+              test_account: test_account
+              email: email
+              latest_app_version: latest_app_version
+              show_push_prompt: true
+          message: message
+          stick_for: stick_for
+        hw_serial: hw_serial
+        last_impression:
+          last_shown_with_asset_id: last_shown_with_asset_id
+          last_viewed_or_created_at: last_viewed_or_created_at
+          viewed_at: viewed_at
+          last_viewed_at: last_viewed_at
+          gesture_direction: gesture_direction
+          created_at: created_at
+          id: id
+          asset_id: asset_id
+          live_photo_on_transition: live_photo_on_transition
+          asset:
+            video_clip_start: video_clip_start
+            md5_hash: md5_hash
+            rotation_cw: rotation_cw
+            taken_at_user_override_at: taken_at_user_override_at
+            is_subscription: true
+            user_portrait_rect: user_portrait_rect
+            exif_orientation: exif_orientation
+            local_identifier: local_identifier
+            ios_media_subtypes: ios_media_subtypes
+            id: id
+            portrait_url: portrait_url
+            portrait_rect: portrait_rect
+            landscape_url: landscape_url
+            selected: ""
+            height: height
+            user_landscape_rect: user_landscape_rect
+            unglacierable: ""
+            video_clipped_by_user_at: video_clipped_by_user_at
+            location_name: location_name
+            data_uti: data_uti
+            glaciered_at: glaciered_at
+            panorama: ""
+            user_id: user_id
+            uploaded_at: uploaded_at
+            taken_at: taken_at
+            auto_landscape_16_10_rect: auto_landscape_16_10_rect
+            favorite: ""
+            upload_priority: upload_priority
+            landscape_rect: landscape_rect
+            duration_unclipped: duration_unclipped
+            horizontal_accuracy: horizontal_accuracy
+            good_resolution: ""
+            thumbnail_url: thumbnail_url
+            auto_portrait_4_5_rect: auto_portrait_4_5_rect
+            duration: duration
+            user_landscape_16_10_rect: user_landscape_16_10_rect
+            video_url: video_url
+            raw_file_name: raw_file_name
+            original_file_name: original_file_name
+            burst_selection_types: burst_selection_types
+            orientation: orientation
+            landscape_16_10_url: landscape_16_10_url
+            burst_id: burst_id
+            file_name: file_name
+            handled_at: handled_at
+            live_photo_off: live_photo_off
+            represents_burst: represents_burst
+            user_portrait_4_5_rect: user_portrait_4_5_rect
+            video_clip_excludes_audio: video_clip_excludes_audio
+            duplicate_of_id: duplicate_of_id
+            portrait_4_5_url: portrait_4_5_url
+            hdr: ""
+            created_at_on_client: created_at_on_client
+            video_file_name: video_file_name
+            width: width
+            is_live: is_live
+            location: location
+            source_id: source_id
+            user:
+              attribution_string: attribution_string
+              attribution_id: attribution_id
+              updated_at: updated_at
+              name: name
+              avatar_file_name: avatar_file_name
+              created_at: created_at
+              id: id
+              short_id: short_id
+              test_account: test_account
+              email: email
+              latest_app_version: latest_app_version
+              show_push_prompt: true
+          view_count: view_count
+          frame_id: frame_id
+        forced_wifi_state: forced_wifi_state
+        updated_at: updated_at
+        first_print_set: first_print_set
+        max_brightness: max_brightness
+        min_brightness: min_brightness
+        trim_color: trim_color
+        orientation: orientation
+        sort_mode: sort_mode
+        contributor_tokens:
+        - expires_at: expires_at
+          updated_at: updated_at
+          contributor_name: contributor_name
+          created_at: created_at
+          phone_number: phone_number
+          email: email
+          frame_id: frame_id
+        - expires_at: expires_at
+          updated_at: updated_at
+          contributor_name: contributor_name
+          created_at: created_at
+          phone_number: phone_number
+          email: email
+          frame_id: frame_id
+        build_version: build_version
+        live_photos_on: true
+        handled_at: handled_at
+        is_charity_water_frame: true
+        num_assets: num_assets
+        is_analog_frame: true
+        time_zone: time_zone
+        forced_wifi_recipient_email: forced_wifi_recipient_email
+        brightness: brightness
+        email_address: email_address
+        frame_environment:
+          updated_at: updated_at
+          last_online_at: last_online_at
+          created_at: created_at
+          id: id
+          frame_id: frame_id
+        has_claimable_gift: true
+        scheduled_display_sleep: true
+        display_aspect_ratio: display_aspect_ratio
+        portrait_pairing_off: portrait_pairing_off
+        digits: digits
+        contributors:
+        - attribution_string: attribution_string
+          attribution_id: attribution_id
+          updated_at: updated_at
+          name: name
+          avatar_file_name: avatar_file_name
+          created_at: created_at
+          id: id
+          short_id: short_id
+          test_account: test_account
+          email: email
+          latest_app_version: latest_app_version
+          show_push_prompt: true
+        - attribution_string: attribution_string
+          attribution_id: attribution_id
+          updated_at: updated_at
+          name: name
+          avatar_file_name: avatar_file_name
+          created_at: created_at
+          id: id
+          short_id: short_id
+          test_account: test_account
+          email: email
+          latest_app_version: latest_app_version
+          show_push_prompt: true
+        smart_adds:
+        - smart_adds
+        - smart_adds
+        client_queue_url: client_queue_url
+        user:
+          attribution_string: attribution_string
+          attribution_id: attribution_id
+          updated_at: updated_at
+          name: name
+          avatar_file_name: avatar_file_name
+          created_at: created_at
+          id: id
+          short_id: short_id
+          test_account: test_account
+          email: email
+          latest_app_version: latest_app_version
+          show_push_prompt: true
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        user_id:
+          type: string
+        software_version:
+          type: string
+        build_version:
+          type: string
+        hw_android_version:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        handled_at:
+          type: string
+        deleted_at:
+          type: string
+        updated_at_on_client:
+          type: string
+        last_impression_at:
+          type: string
+        orientation:
+          type: string
+        auto_brightness:
+          type: boolean
+        min_brightness:
+          type: string
+        max_brightness:
+          type: string
+        brightness:
+          type: string
+        sense_motion:
+          type: boolean
+        default_speed:
+          type: string
+        slideshow_interval:
+          type: string
+        slideshow_auto:
+          type: boolean
+        digits:
+          type: string
+        contributor_tokens:
+          items:
+            $ref: '#/components/schemas/ContributorTokens'
+          type: array
+        hw_serial:
+          type: string
+        matting_color:
+          type: string
+        trim_color:
+          type: string
+        is_handling:
+          type: boolean
+        calibrations_last_modified_at:
+          type: string
+        gestures_on:
+          type: boolean
+        portrait_pairing_off:
+          type: string
+        live_photos_on:
+          type: boolean
+        auto_processed_playlist_ids:
+          items:
+            type: string
+          type: array
+        time_zone:
+          type: string
+        wifi_network:
+          type: string
+        cold_boot_at:
+          type: string
+        is_charity_water_frame:
+          type: boolean
+        num_assets:
+          type: string
+        thanks_on:
+          type: boolean
+        frame_queue_url:
+          type: string
+        client_queue_url:
+          type: string
+        scheduled_display_sleep:
+          type: boolean
+        scheduled_display_on_at:
+          type: string
+        scheduled_display_off_at:
+          type: string
+        forced_wifi_state:
+          type: string
+        forced_wifi_recipient_email:
+          type: string
+        is_analog_frame:
+          type: boolean
+        control_type:
+          type: string
+        display_aspect_ratio:
+          type: string
+        has_claimable_gift:
+          type: boolean
+        gift_billing_hint:
+          type: string
+        locale:
+          type: string
+        frame_type:
+          type: string
+        description:
+          type: string
+        representative_asset_id:
+          type: string
+        sort_mode:
+          type: string
+        email_address:
+          type: string
+        features:
+          items:
+            type: string
+          type: array
+        volume:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+        playlists:
+          items:
+            type: string
+          type: array
+        last_feed_item:
+          $ref: '#/components/schemas/FeedItem'
+        last_impression:
+          $ref: '#/components/schemas/Impression'
+        recent_assets:
+          items:
+            $ref: '#/components/schemas/Asset'
+          type: array
+        contributors:
+          items:
+            $ref: '#/components/schemas/User'
+          type: array
+        frame_environment:
+          $ref: '#/components/schemas/FrameEnvironment'
+        current_print_set:
+          type: string
+        first_print_set:
+          type: string
+        child_albums:
+          items:
+            type: string
+          type: array
+        smart_adds:
+          items:
+            type: string
+          type: array
+      type: object
+    Frames:
+      example:
+        frames:
+        - auto_brightness: true
+          sense_motion: true
+          matting_color: matting_color
+          scheduled_display_on_at: scheduled_display_on_at
+          features:
+          - features
+          - features
+          thanks_on: true
+          is_handling: true
+          id: id
+          software_version: software_version
+          last_impression_at: last_impression_at
+          control_type: control_type
+          wifi_network: wifi_network
+          gift_billing_hint: gift_billing_hint
+          frame_queue_url: frame_queue_url
+          scheduled_display_off_at: scheduled_display_off_at
+          representative_asset_id: representative_asset_id
+          playlists:
+          - playlists
+          - playlists
+          frame_type: frame_type
+          current_print_set: current_print_set
+          deleted_at: deleted_at
+          auto_processed_playlist_ids:
+          - auto_processed_playlist_ids
+          - auto_processed_playlist_ids
+          recent_assets:
+          - video_clip_start: video_clip_start
+            md5_hash: md5_hash
+            rotation_cw: rotation_cw
+            taken_at_user_override_at: taken_at_user_override_at
+            is_subscription: true
+            user_portrait_rect: user_portrait_rect
+            exif_orientation: exif_orientation
+            local_identifier: local_identifier
+            ios_media_subtypes: ios_media_subtypes
+            id: id
+            portrait_url: portrait_url
+            portrait_rect: portrait_rect
+            landscape_url: landscape_url
+            selected: ""
+            height: height
+            user_landscape_rect: user_landscape_rect
+            unglacierable: ""
+            video_clipped_by_user_at: video_clipped_by_user_at
+            location_name: location_name
+            data_uti: data_uti
+            glaciered_at: glaciered_at
+            panorama: ""
+            user_id: user_id
+            uploaded_at: uploaded_at
+            taken_at: taken_at
+            auto_landscape_16_10_rect: auto_landscape_16_10_rect
+            favorite: ""
+            upload_priority: upload_priority
+            landscape_rect: landscape_rect
+            duration_unclipped: duration_unclipped
+            horizontal_accuracy: horizontal_accuracy
+            good_resolution: ""
+            thumbnail_url: thumbnail_url
+            auto_portrait_4_5_rect: auto_portrait_4_5_rect
+            duration: duration
+            user_landscape_16_10_rect: user_landscape_16_10_rect
+            video_url: video_url
+            raw_file_name: raw_file_name
+            original_file_name: original_file_name
+            burst_selection_types: burst_selection_types
+            orientation: orientation
+            landscape_16_10_url: landscape_16_10_url
+            burst_id: burst_id
+            file_name: file_name
+            handled_at: handled_at
+            live_photo_off: live_photo_off
+            represents_burst: represents_burst
+            user_portrait_4_5_rect: user_portrait_4_5_rect
+            video_clip_excludes_audio: video_clip_excludes_audio
+            duplicate_of_id: duplicate_of_id
+            portrait_4_5_url: portrait_4_5_url
+            hdr: ""
+            created_at_on_client: created_at_on_client
+            video_file_name: video_file_name
+            width: width
+            is_live: is_live
+            location: location
+            source_id: source_id
+            user:
+              attribution_string: attribution_string
+              attribution_id: attribution_id
+              updated_at: updated_at
+              name: name
+              avatar_file_name: avatar_file_name
+              created_at: created_at
+              id: id
+              short_id: short_id
+              test_account: test_account
+              email: email
+              latest_app_version: latest_app_version
+              show_push_prompt: true
+          - video_clip_start: video_clip_start
+            md5_hash: md5_hash
+            rotation_cw: rotation_cw
+            taken_at_user_override_at: taken_at_user_override_at
+            is_subscription: true
+            user_portrait_rect: user_portrait_rect
+            exif_orientation: exif_orientation
+            local_identifier: local_identifier
+            ios_media_subtypes: ios_media_subtypes
+            id: id
+            portrait_url: portrait_url
+            portrait_rect: portrait_rect
+            landscape_url: landscape_url
+            selected: ""
+            height: height
+            user_landscape_rect: user_landscape_rect
+            unglacierable: ""
+            video_clipped_by_user_at: video_clipped_by_user_at
+            location_name: location_name
+            data_uti: data_uti
+            glaciered_at: glaciered_at
+            panorama: ""
+            user_id: user_id
+            uploaded_at: uploaded_at
+            taken_at: taken_at
+            auto_landscape_16_10_rect: auto_landscape_16_10_rect
+            favorite: ""
+            upload_priority: upload_priority
+            landscape_rect: landscape_rect
+            duration_unclipped: duration_unclipped
+            horizontal_accuracy: horizontal_accuracy
+            good_resolution: ""
+            thumbnail_url: thumbnail_url
+            auto_portrait_4_5_rect: auto_portrait_4_5_rect
+            duration: duration
+            user_landscape_16_10_rect: user_landscape_16_10_rect
+            video_url: video_url
+            raw_file_name: raw_file_name
+            original_file_name: original_file_name
+            burst_selection_types: burst_selection_types
+            orientation: orientation
+            landscape_16_10_url: landscape_16_10_url
+            burst_id: burst_id
+            file_name: file_name
+            handled_at: handled_at
+            live_photo_off: live_photo_off
+            represents_burst: represents_burst
+            user_portrait_4_5_rect: user_portrait_4_5_rect
+            video_clip_excludes_audio: video_clip_excludes_audio
+            duplicate_of_id: duplicate_of_id
+            portrait_4_5_url: portrait_4_5_url
+            hdr: ""
+            created_at_on_client: created_at_on_client
+            video_file_name: video_file_name
+            width: width
+            is_live: is_live
+            location: location
+            source_id: source_id
+            user:
+              attribution_string: attribution_string
+              attribution_id: attribution_id
+              updated_at: updated_at
+              name: name
+              avatar_file_name: avatar_file_name
+              created_at: created_at
+              id: id
+              short_id: short_id
+              test_account: test_account
+              email: email
+              latest_app_version: latest_app_version
+              show_push_prompt: true
+          volume: volume
+          user_id: user_id
+          calibrations_last_modified_at: calibrations_last_modified_at
+          name: name
+          slideshow_auto: true
+          default_speed: default_speed
+          gestures_on: true
+          child_albums:
+          - child_albums
+          - child_albums
+          slideshow_interval: slideshow_interval
+          hw_android_version: hw_android_version
+          cold_boot_at: cold_boot_at
+          created_at: created_at
+          description: description
+          updated_at_on_client: updated_at_on_client
+          locale: locale
+          last_feed_item:
+            metadata:
+              date: date
+              attribution: attribution
+              location: location
+              pair_reasons: pair_reasons
+            assets:
+            - video_clip_start: video_clip_start
+              md5_hash: md5_hash
+              rotation_cw: rotation_cw
+              taken_at_user_override_at: taken_at_user_override_at
+              is_subscription: true
+              user_portrait_rect: user_portrait_rect
+              exif_orientation: exif_orientation
+              local_identifier: local_identifier
+              ios_media_subtypes: ios_media_subtypes
+              id: id
+              portrait_url: portrait_url
+              portrait_rect: portrait_rect
+              landscape_url: landscape_url
+              selected: ""
+              height: height
+              user_landscape_rect: user_landscape_rect
+              unglacierable: ""
+              video_clipped_by_user_at: video_clipped_by_user_at
+              location_name: location_name
+              data_uti: data_uti
+              glaciered_at: glaciered_at
+              panorama: ""
+              user_id: user_id
+              uploaded_at: uploaded_at
+              taken_at: taken_at
+              auto_landscape_16_10_rect: auto_landscape_16_10_rect
+              favorite: ""
+              upload_priority: upload_priority
+              landscape_rect: landscape_rect
+              duration_unclipped: duration_unclipped
+              horizontal_accuracy: horizontal_accuracy
+              good_resolution: ""
+              thumbnail_url: thumbnail_url
+              auto_portrait_4_5_rect: auto_portrait_4_5_rect
+              duration: duration
+              user_landscape_16_10_rect: user_landscape_16_10_rect
+              video_url: video_url
+              raw_file_name: raw_file_name
+              original_file_name: original_file_name
+              burst_selection_types: burst_selection_types
+              orientation: orientation
+              landscape_16_10_url: landscape_16_10_url
+              burst_id: burst_id
+              file_name: file_name
+              handled_at: handled_at
+              live_photo_off: live_photo_off
+              represents_burst: represents_burst
+              user_portrait_4_5_rect: user_portrait_4_5_rect
+              video_clip_excludes_audio: video_clip_excludes_audio
+              duplicate_of_id: duplicate_of_id
+              portrait_4_5_url: portrait_4_5_url
+              hdr: ""
+              created_at_on_client: created_at_on_client
+              video_file_name: video_file_name
+              width: width
+              is_live: is_live
+              location: location
+              source_id: source_id
+              user:
+                attribution_string: attribution_string
+                attribution_id: attribution_id
+                updated_at: updated_at
+                name: name
+                avatar_file_name: avatar_file_name
+                created_at: created_at
+                id: id
+                short_id: short_id
+                test_account: test_account
+                email: email
+                latest_app_version: latest_app_version
+                show_push_prompt: true
+            - video_clip_start: video_clip_start
+              md5_hash: md5_hash
+              rotation_cw: rotation_cw
+              taken_at_user_override_at: taken_at_user_override_at
+              is_subscription: true
+              user_portrait_rect: user_portrait_rect
+              exif_orientation: exif_orientation
+              local_identifier: local_identifier
+              ios_media_subtypes: ios_media_subtypes
+              id: id
+              portrait_url: portrait_url
+              portrait_rect: portrait_rect
+              landscape_url: landscape_url
+              selected: ""
+              height: height
+              user_landscape_rect: user_landscape_rect
+              unglacierable: ""
+              video_clipped_by_user_at: video_clipped_by_user_at
+              location_name: location_name
+              data_uti: data_uti
+              glaciered_at: glaciered_at
+              panorama: ""
+              user_id: user_id
+              uploaded_at: uploaded_at
+              taken_at: taken_at
+              auto_landscape_16_10_rect: auto_landscape_16_10_rect
+              favorite: ""
+              upload_priority: upload_priority
+              landscape_rect: landscape_rect
+              duration_unclipped: duration_unclipped
+              horizontal_accuracy: horizontal_accuracy
+              good_resolution: ""
+              thumbnail_url: thumbnail_url
+              auto_portrait_4_5_rect: auto_portrait_4_5_rect
+              duration: duration
+              user_landscape_16_10_rect: user_landscape_16_10_rect
+              video_url: video_url
+              raw_file_name: raw_file_name
+              original_file_name: original_file_name
+              burst_selection_types: burst_selection_types
+              orientation: orientation
+              landscape_16_10_url: landscape_16_10_url
+              burst_id: burst_id
+              file_name: file_name
+              handled_at: handled_at
+              live_photo_off: live_photo_off
+              represents_burst: represents_burst
+              user_portrait_4_5_rect: user_portrait_4_5_rect
+              video_clip_excludes_audio: video_clip_excludes_audio
+              duplicate_of_id: duplicate_of_id
+              portrait_4_5_url: portrait_4_5_url
+              hdr: ""
+              created_at_on_client: created_at_on_client
+              video_file_name: video_file_name
+              width: width
+              is_live: is_live
+              location: location
+              source_id: source_id
+              user:
+                attribution_string: attribution_string
+                attribution_id: attribution_id
+                updated_at: updated_at
+                name: name
+                avatar_file_name: avatar_file_name
+                created_at: created_at
+                id: id
+                short_id: short_id
+                test_account: test_account
+                email: email
+                latest_app_version: latest_app_version
+                show_push_prompt: true
+            message: message
+            stick_for: stick_for
+          hw_serial: hw_serial
+          last_impression:
+            last_shown_with_asset_id: last_shown_with_asset_id
+            last_viewed_or_created_at: last_viewed_or_created_at
+            viewed_at: viewed_at
+            last_viewed_at: last_viewed_at
+            gesture_direction: gesture_direction
+            created_at: created_at
+            id: id
+            asset_id: asset_id
+            live_photo_on_transition: live_photo_on_transition
+            asset:
+              video_clip_start: video_clip_start
+              md5_hash: md5_hash
+              rotation_cw: rotation_cw
+              taken_at_user_override_at: taken_at_user_override_at
+              is_subscription: true
+              user_portrait_rect: user_portrait_rect
+              exif_orientation: exif_orientation
+              local_identifier: local_identifier
+              ios_media_subtypes: ios_media_subtypes
+              id: id
+              portrait_url: portrait_url
+              portrait_rect: portrait_rect
+              landscape_url: landscape_url
+              selected: ""
+              height: height
+              user_landscape_rect: user_landscape_rect
+              unglacierable: ""
+              video_clipped_by_user_at: video_clipped_by_user_at
+              location_name: location_name
+              data_uti: data_uti
+              glaciered_at: glaciered_at
+              panorama: ""
+              user_id: user_id
+              uploaded_at: uploaded_at
+              taken_at: taken_at
+              auto_landscape_16_10_rect: auto_landscape_16_10_rect
+              favorite: ""
+              upload_priority: upload_priority
+              landscape_rect: landscape_rect
+              duration_unclipped: duration_unclipped
+              horizontal_accuracy: horizontal_accuracy
+              good_resolution: ""
+              thumbnail_url: thumbnail_url
+              auto_portrait_4_5_rect: auto_portrait_4_5_rect
+              duration: duration
+              user_landscape_16_10_rect: user_landscape_16_10_rect
+              video_url: video_url
+              raw_file_name: raw_file_name
+              original_file_name: original_file_name
+              burst_selection_types: burst_selection_types
+              orientation: orientation
+              landscape_16_10_url: landscape_16_10_url
+              burst_id: burst_id
+              file_name: file_name
+              handled_at: handled_at
+              live_photo_off: live_photo_off
+              represents_burst: represents_burst
+              user_portrait_4_5_rect: user_portrait_4_5_rect
+              video_clip_excludes_audio: video_clip_excludes_audio
+              duplicate_of_id: duplicate_of_id
+              portrait_4_5_url: portrait_4_5_url
+              hdr: ""
+              created_at_on_client: created_at_on_client
+              video_file_name: video_file_name
+              width: width
+              is_live: is_live
+              location: location
+              source_id: source_id
+              user:
+                attribution_string: attribution_string
+                attribution_id: attribution_id
+                updated_at: updated_at
+                name: name
+                avatar_file_name: avatar_file_name
+                created_at: created_at
+                id: id
+                short_id: short_id
+                test_account: test_account
+                email: email
+                latest_app_version: latest_app_version
+                show_push_prompt: true
+            view_count: view_count
+            frame_id: frame_id
+          forced_wifi_state: forced_wifi_state
+          updated_at: updated_at
+          first_print_set: first_print_set
+          max_brightness: max_brightness
+          min_brightness: min_brightness
+          trim_color: trim_color
+          orientation: orientation
+          sort_mode: sort_mode
+          contributor_tokens:
+          - expires_at: expires_at
+            updated_at: updated_at
+            contributor_name: contributor_name
+            created_at: created_at
+            phone_number: phone_number
+            email: email
+            frame_id: frame_id
+          - expires_at: expires_at
+            updated_at: updated_at
+            contributor_name: contributor_name
+            created_at: created_at
+            phone_number: phone_number
+            email: email
+            frame_id: frame_id
+          build_version: build_version
+          live_photos_on: true
+          handled_at: handled_at
+          is_charity_water_frame: true
+          num_assets: num_assets
+          is_analog_frame: true
+          time_zone: time_zone
+          forced_wifi_recipient_email: forced_wifi_recipient_email
+          brightness: brightness
+          email_address: email_address
+          frame_environment:
+            updated_at: updated_at
+            last_online_at: last_online_at
+            created_at: created_at
+            id: id
+            frame_id: frame_id
+          has_claimable_gift: true
+          scheduled_display_sleep: true
+          display_aspect_ratio: display_aspect_ratio
+          portrait_pairing_off: portrait_pairing_off
+          digits: digits
+          contributors:
+          - attribution_string: attribution_string
+            attribution_id: attribution_id
+            updated_at: updated_at
+            name: name
+            avatar_file_name: avatar_file_name
+            created_at: created_at
+            id: id
+            short_id: short_id
+            test_account: test_account
+            email: email
+            latest_app_version: latest_app_version
+            show_push_prompt: true
+          - attribution_string: attribution_string
+            attribution_id: attribution_id
+            updated_at: updated_at
+            name: name
+            avatar_file_name: avatar_file_name
+            created_at: created_at
+            id: id
+            short_id: short_id
+            test_account: test_account
+            email: email
+            latest_app_version: latest_app_version
+            show_push_prompt: true
+          smart_adds:
+          - smart_adds
+          - smart_adds
+          client_queue_url: client_queue_url
+          user:
+            attribution_string: attribution_string
+            attribution_id: attribution_id
+            updated_at: updated_at
+            name: name
+            avatar_file_name: avatar_file_name
+            created_at: created_at
+            id: id
+            short_id: short_id
+            test_account: test_account
+            email: email
+            latest_app_version: latest_app_version
+            show_push_prompt: true
+        - auto_brightness: true
+          sense_motion: true
+          matting_color: matting_color
+          scheduled_display_on_at: scheduled_display_on_at
+          features:
+          - features
+          - features
+          thanks_on: true
+          is_handling: true
+          id: id
+          software_version: software_version
+          last_impression_at: last_impression_at
+          control_type: control_type
+          wifi_network: wifi_network
+          gift_billing_hint: gift_billing_hint
+          frame_queue_url: frame_queue_url
+          scheduled_display_off_at: scheduled_display_off_at
+          representative_asset_id: representative_asset_id
+          playlists:
+          - playlists
+          - playlists
+          frame_type: frame_type
+          current_print_set: current_print_set
+          deleted_at: deleted_at
+          auto_processed_playlist_ids:
+          - auto_processed_playlist_ids
+          - auto_processed_playlist_ids
+          recent_assets:
+          - video_clip_start: video_clip_start
+            md5_hash: md5_hash
+            rotation_cw: rotation_cw
+            taken_at_user_override_at: taken_at_user_override_at
+            is_subscription: true
+            user_portrait_rect: user_portrait_rect
+            exif_orientation: exif_orientation
+            local_identifier: local_identifier
+            ios_media_subtypes: ios_media_subtypes
+            id: id
+            portrait_url: portrait_url
+            portrait_rect: portrait_rect
+            landscape_url: landscape_url
+            selected: ""
+            height: height
+            user_landscape_rect: user_landscape_rect
+            unglacierable: ""
+            video_clipped_by_user_at: video_clipped_by_user_at
+            location_name: location_name
+            data_uti: data_uti
+            glaciered_at: glaciered_at
+            panorama: ""
+            user_id: user_id
+            uploaded_at: uploaded_at
+            taken_at: taken_at
+            auto_landscape_16_10_rect: auto_landscape_16_10_rect
+            favorite: ""
+            upload_priority: upload_priority
+            landscape_rect: landscape_rect
+            duration_unclipped: duration_unclipped
+            horizontal_accuracy: horizontal_accuracy
+            good_resolution: ""
+            thumbnail_url: thumbnail_url
+            auto_portrait_4_5_rect: auto_portrait_4_5_rect
+            duration: duration
+            user_landscape_16_10_rect: user_landscape_16_10_rect
+            video_url: video_url
+            raw_file_name: raw_file_name
+            original_file_name: original_file_name
+            burst_selection_types: burst_selection_types
+            orientation: orientation
+            landscape_16_10_url: landscape_16_10_url
+            burst_id: burst_id
+            file_name: file_name
+            handled_at: handled_at
+            live_photo_off: live_photo_off
+            represents_burst: represents_burst
+            user_portrait_4_5_rect: user_portrait_4_5_rect
+            video_clip_excludes_audio: video_clip_excludes_audio
+            duplicate_of_id: duplicate_of_id
+            portrait_4_5_url: portrait_4_5_url
+            hdr: ""
+            created_at_on_client: created_at_on_client
+            video_file_name: video_file_name
+            width: width
+            is_live: is_live
+            location: location
+            source_id: source_id
+            user:
+              attribution_string: attribution_string
+              attribution_id: attribution_id
+              updated_at: updated_at
+              name: name
+              avatar_file_name: avatar_file_name
+              created_at: created_at
+              id: id
+              short_id: short_id
+              test_account: test_account
+              email: email
+              latest_app_version: latest_app_version
+              show_push_prompt: true
+          - video_clip_start: video_clip_start
+            md5_hash: md5_hash
+            rotation_cw: rotation_cw
+            taken_at_user_override_at: taken_at_user_override_at
+            is_subscription: true
+            user_portrait_rect: user_portrait_rect
+            exif_orientation: exif_orientation
+            local_identifier: local_identifier
+            ios_media_subtypes: ios_media_subtypes
+            id: id
+            portrait_url: portrait_url
+            portrait_rect: portrait_rect
+            landscape_url: landscape_url
+            selected: ""
+            height: height
+            user_landscape_rect: user_landscape_rect
+            unglacierable: ""
+            video_clipped_by_user_at: video_clipped_by_user_at
+            location_name: location_name
+            data_uti: data_uti
+            glaciered_at: glaciered_at
+            panorama: ""
+            user_id: user_id
+            uploaded_at: uploaded_at
+            taken_at: taken_at
+            auto_landscape_16_10_rect: auto_landscape_16_10_rect
+            favorite: ""
+            upload_priority: upload_priority
+            landscape_rect: landscape_rect
+            duration_unclipped: duration_unclipped
+            horizontal_accuracy: horizontal_accuracy
+            good_resolution: ""
+            thumbnail_url: thumbnail_url
+            auto_portrait_4_5_rect: auto_portrait_4_5_rect
+            duration: duration
+            user_landscape_16_10_rect: user_landscape_16_10_rect
+            video_url: video_url
+            raw_file_name: raw_file_name
+            original_file_name: original_file_name
+            burst_selection_types: burst_selection_types
+            orientation: orientation
+            landscape_16_10_url: landscape_16_10_url
+            burst_id: burst_id
+            file_name: file_name
+            handled_at: handled_at
+            live_photo_off: live_photo_off
+            represents_burst: represents_burst
+            user_portrait_4_5_rect: user_portrait_4_5_rect
+            video_clip_excludes_audio: video_clip_excludes_audio
+            duplicate_of_id: duplicate_of_id
+            portrait_4_5_url: portrait_4_5_url
+            hdr: ""
+            created_at_on_client: created_at_on_client
+            video_file_name: video_file_name
+            width: width
+            is_live: is_live
+            location: location
+            source_id: source_id
+            user:
+              attribution_string: attribution_string
+              attribution_id: attribution_id
+              updated_at: updated_at
+              name: name
+              avatar_file_name: avatar_file_name
+              created_at: created_at
+              id: id
+              short_id: short_id
+              test_account: test_account
+              email: email
+              latest_app_version: latest_app_version
+              show_push_prompt: true
+          volume: volume
+          user_id: user_id
+          calibrations_last_modified_at: calibrations_last_modified_at
+          name: name
+          slideshow_auto: true
+          default_speed: default_speed
+          gestures_on: true
+          child_albums:
+          - child_albums
+          - child_albums
+          slideshow_interval: slideshow_interval
+          hw_android_version: hw_android_version
+          cold_boot_at: cold_boot_at
+          created_at: created_at
+          description: description
+          updated_at_on_client: updated_at_on_client
+          locale: locale
+          last_feed_item:
+            metadata:
+              date: date
+              attribution: attribution
+              location: location
+              pair_reasons: pair_reasons
+            assets:
+            - video_clip_start: video_clip_start
+              md5_hash: md5_hash
+              rotation_cw: rotation_cw
+              taken_at_user_override_at: taken_at_user_override_at
+              is_subscription: true
+              user_portrait_rect: user_portrait_rect
+              exif_orientation: exif_orientation
+              local_identifier: local_identifier
+              ios_media_subtypes: ios_media_subtypes
+              id: id
+              portrait_url: portrait_url
+              portrait_rect: portrait_rect
+              landscape_url: landscape_url
+              selected: ""
+              height: height
+              user_landscape_rect: user_landscape_rect
+              unglacierable: ""
+              video_clipped_by_user_at: video_clipped_by_user_at
+              location_name: location_name
+              data_uti: data_uti
+              glaciered_at: glaciered_at
+              panorama: ""
+              user_id: user_id
+              uploaded_at: uploaded_at
+              taken_at: taken_at
+              auto_landscape_16_10_rect: auto_landscape_16_10_rect
+              favorite: ""
+              upload_priority: upload_priority
+              landscape_rect: landscape_rect
+              duration_unclipped: duration_unclipped
+              horizontal_accuracy: horizontal_accuracy
+              good_resolution: ""
+              thumbnail_url: thumbnail_url
+              auto_portrait_4_5_rect: auto_portrait_4_5_rect
+              duration: duration
+              user_landscape_16_10_rect: user_landscape_16_10_rect
+              video_url: video_url
+              raw_file_name: raw_file_name
+              original_file_name: original_file_name
+              burst_selection_types: burst_selection_types
+              orientation: orientation
+              landscape_16_10_url: landscape_16_10_url
+              burst_id: burst_id
+              file_name: file_name
+              handled_at: handled_at
+              live_photo_off: live_photo_off
+              represents_burst: represents_burst
+              user_portrait_4_5_rect: user_portrait_4_5_rect
+              video_clip_excludes_audio: video_clip_excludes_audio
+              duplicate_of_id: duplicate_of_id
+              portrait_4_5_url: portrait_4_5_url
+              hdr: ""
+              created_at_on_client: created_at_on_client
+              video_file_name: video_file_name
+              width: width
+              is_live: is_live
+              location: location
+              source_id: source_id
+              user:
+                attribution_string: attribution_string
+                attribution_id: attribution_id
+                updated_at: updated_at
+                name: name
+                avatar_file_name: avatar_file_name
+                created_at: created_at
+                id: id
+                short_id: short_id
+                test_account: test_account
+                email: email
+                latest_app_version: latest_app_version
+                show_push_prompt: true
+            - video_clip_start: video_clip_start
+              md5_hash: md5_hash
+              rotation_cw: rotation_cw
+              taken_at_user_override_at: taken_at_user_override_at
+              is_subscription: true
+              user_portrait_rect: user_portrait_rect
+              exif_orientation: exif_orientation
+              local_identifier: local_identifier
+              ios_media_subtypes: ios_media_subtypes
+              id: id
+              portrait_url: portrait_url
+              portrait_rect: portrait_rect
+              landscape_url: landscape_url
+              selected: ""
+              height: height
+              user_landscape_rect: user_landscape_rect
+              unglacierable: ""
+              video_clipped_by_user_at: video_clipped_by_user_at
+              location_name: location_name
+              data_uti: data_uti
+              glaciered_at: glaciered_at
+              panorama: ""
+              user_id: user_id
+              uploaded_at: uploaded_at
+              taken_at: taken_at
+              auto_landscape_16_10_rect: auto_landscape_16_10_rect
+              favorite: ""
+              upload_priority: upload_priority
+              landscape_rect: landscape_rect
+              duration_unclipped: duration_unclipped
+              horizontal_accuracy: horizontal_accuracy
+              good_resolution: ""
+              thumbnail_url: thumbnail_url
+              auto_portrait_4_5_rect: auto_portrait_4_5_rect
+              duration: duration
+              user_landscape_16_10_rect: user_landscape_16_10_rect
+              video_url: video_url
+              raw_file_name: raw_file_name
+              original_file_name: original_file_name
+              burst_selection_types: burst_selection_types
+              orientation: orientation
+              landscape_16_10_url: landscape_16_10_url
+              burst_id: burst_id
+              file_name: file_name
+              handled_at: handled_at
+              live_photo_off: live_photo_off
+              represents_burst: represents_burst
+              user_portrait_4_5_rect: user_portrait_4_5_rect
+              video_clip_excludes_audio: video_clip_excludes_audio
+              duplicate_of_id: duplicate_of_id
+              portrait_4_5_url: portrait_4_5_url
+              hdr: ""
+              created_at_on_client: created_at_on_client
+              video_file_name: video_file_name
+              width: width
+              is_live: is_live
+              location: location
+              source_id: source_id
+              user:
+                attribution_string: attribution_string
+                attribution_id: attribution_id
+                updated_at: updated_at
+                name: name
+                avatar_file_name: avatar_file_name
+                created_at: created_at
+                id: id
+                short_id: short_id
+                test_account: test_account
+                email: email
+                latest_app_version: latest_app_version
+                show_push_prompt: true
+            message: message
+            stick_for: stick_for
+          hw_serial: hw_serial
+          last_impression:
+            last_shown_with_asset_id: last_shown_with_asset_id
+            last_viewed_or_created_at: last_viewed_or_created_at
+            viewed_at: viewed_at
+            last_viewed_at: last_viewed_at
+            gesture_direction: gesture_direction
+            created_at: created_at
+            id: id
+            asset_id: asset_id
+            live_photo_on_transition: live_photo_on_transition
+            asset:
+              video_clip_start: video_clip_start
+              md5_hash: md5_hash
+              rotation_cw: rotation_cw
+              taken_at_user_override_at: taken_at_user_override_at
+              is_subscription: true
+              user_portrait_rect: user_portrait_rect
+              exif_orientation: exif_orientation
+              local_identifier: local_identifier
+              ios_media_subtypes: ios_media_subtypes
+              id: id
+              portrait_url: portrait_url
+              portrait_rect: portrait_rect
+              landscape_url: landscape_url
+              selected: ""
+              height: height
+              user_landscape_rect: user_landscape_rect
+              unglacierable: ""
+              video_clipped_by_user_at: video_clipped_by_user_at
+              location_name: location_name
+              data_uti: data_uti
+              glaciered_at: glaciered_at
+              panorama: ""
+              user_id: user_id
+              uploaded_at: uploaded_at
+              taken_at: taken_at
+              auto_landscape_16_10_rect: auto_landscape_16_10_rect
+              favorite: ""
+              upload_priority: upload_priority
+              landscape_rect: landscape_rect
+              duration_unclipped: duration_unclipped
+              horizontal_accuracy: horizontal_accuracy
+              good_resolution: ""
+              thumbnail_url: thumbnail_url
+              auto_portrait_4_5_rect: auto_portrait_4_5_rect
+              duration: duration
+              user_landscape_16_10_rect: user_landscape_16_10_rect
+              video_url: video_url
+              raw_file_name: raw_file_name
+              original_file_name: original_file_name
+              burst_selection_types: burst_selection_types
+              orientation: orientation
+              landscape_16_10_url: landscape_16_10_url
+              burst_id: burst_id
+              file_name: file_name
+              handled_at: handled_at
+              live_photo_off: live_photo_off
+              represents_burst: represents_burst
+              user_portrait_4_5_rect: user_portrait_4_5_rect
+              video_clip_excludes_audio: video_clip_excludes_audio
+              duplicate_of_id: duplicate_of_id
+              portrait_4_5_url: portrait_4_5_url
+              hdr: ""
+              created_at_on_client: created_at_on_client
+              video_file_name: video_file_name
+              width: width
+              is_live: is_live
+              location: location
+              source_id: source_id
+              user:
+                attribution_string: attribution_string
+                attribution_id: attribution_id
+                updated_at: updated_at
+                name: name
+                avatar_file_name: avatar_file_name
+                created_at: created_at
+                id: id
+                short_id: short_id
+                test_account: test_account
+                email: email
+                latest_app_version: latest_app_version
+                show_push_prompt: true
+            view_count: view_count
+            frame_id: frame_id
+          forced_wifi_state: forced_wifi_state
+          updated_at: updated_at
+          first_print_set: first_print_set
+          max_brightness: max_brightness
+          min_brightness: min_brightness
+          trim_color: trim_color
+          orientation: orientation
+          sort_mode: sort_mode
+          contributor_tokens:
+          - expires_at: expires_at
+            updated_at: updated_at
+            contributor_name: contributor_name
+            created_at: created_at
+            phone_number: phone_number
+            email: email
+            frame_id: frame_id
+          - expires_at: expires_at
+            updated_at: updated_at
+            contributor_name: contributor_name
+            created_at: created_at
+            phone_number: phone_number
+            email: email
+            frame_id: frame_id
+          build_version: build_version
+          live_photos_on: true
+          handled_at: handled_at
+          is_charity_water_frame: true
+          num_assets: num_assets
+          is_analog_frame: true
+          time_zone: time_zone
+          forced_wifi_recipient_email: forced_wifi_recipient_email
+          brightness: brightness
+          email_address: email_address
+          frame_environment:
+            updated_at: updated_at
+            last_online_at: last_online_at
+            created_at: created_at
+            id: id
+            frame_id: frame_id
+          has_claimable_gift: true
+          scheduled_display_sleep: true
+          display_aspect_ratio: display_aspect_ratio
+          portrait_pairing_off: portrait_pairing_off
+          digits: digits
+          contributors:
+          - attribution_string: attribution_string
+            attribution_id: attribution_id
+            updated_at: updated_at
+            name: name
+            avatar_file_name: avatar_file_name
+            created_at: created_at
+            id: id
+            short_id: short_id
+            test_account: test_account
+            email: email
+            latest_app_version: latest_app_version
+            show_push_prompt: true
+          - attribution_string: attribution_string
+            attribution_id: attribution_id
+            updated_at: updated_at
+            name: name
+            avatar_file_name: avatar_file_name
+            created_at: created_at
+            id: id
+            short_id: short_id
+            test_account: test_account
+            email: email
+            latest_app_version: latest_app_version
+            show_push_prompt: true
+          smart_adds:
+          - smart_adds
+          - smart_adds
+          client_queue_url: client_queue_url
+          user:
+            attribution_string: attribution_string
+            attribution_id: attribution_id
+            updated_at: updated_at
+            name: name
+            avatar_file_name: avatar_file_name
+            created_at: created_at
+            id: id
+            short_id: short_id
+            test_account: test_account
+            email: email
+            latest_app_version: latest_app_version
+            show_push_prompt: true
+      properties:
+        frames:
+          items:
+            $ref: '#/components/schemas/Frame'
+          type: array
+      type: object
+    Impression:
+      example:
+        last_shown_with_asset_id: last_shown_with_asset_id
+        last_viewed_or_created_at: last_viewed_or_created_at
+        viewed_at: viewed_at
+        last_viewed_at: last_viewed_at
+        gesture_direction: gesture_direction
+        created_at: created_at
+        id: id
+        asset_id: asset_id
+        live_photo_on_transition: live_photo_on_transition
+        asset:
+          video_clip_start: video_clip_start
+          md5_hash: md5_hash
+          rotation_cw: rotation_cw
+          taken_at_user_override_at: taken_at_user_override_at
+          is_subscription: true
+          user_portrait_rect: user_portrait_rect
+          exif_orientation: exif_orientation
+          local_identifier: local_identifier
+          ios_media_subtypes: ios_media_subtypes
+          id: id
+          portrait_url: portrait_url
+          portrait_rect: portrait_rect
+          landscape_url: landscape_url
+          selected: ""
+          height: height
+          user_landscape_rect: user_landscape_rect
+          unglacierable: ""
+          video_clipped_by_user_at: video_clipped_by_user_at
+          location_name: location_name
+          data_uti: data_uti
+          glaciered_at: glaciered_at
+          panorama: ""
+          user_id: user_id
+          uploaded_at: uploaded_at
+          taken_at: taken_at
+          auto_landscape_16_10_rect: auto_landscape_16_10_rect
+          favorite: ""
+          upload_priority: upload_priority
+          landscape_rect: landscape_rect
+          duration_unclipped: duration_unclipped
+          horizontal_accuracy: horizontal_accuracy
+          good_resolution: ""
+          thumbnail_url: thumbnail_url
+          auto_portrait_4_5_rect: auto_portrait_4_5_rect
+          duration: duration
+          user_landscape_16_10_rect: user_landscape_16_10_rect
+          video_url: video_url
+          raw_file_name: raw_file_name
+          original_file_name: original_file_name
+          burst_selection_types: burst_selection_types
+          orientation: orientation
+          landscape_16_10_url: landscape_16_10_url
+          burst_id: burst_id
+          file_name: file_name
+          handled_at: handled_at
+          live_photo_off: live_photo_off
+          represents_burst: represents_burst
+          user_portrait_4_5_rect: user_portrait_4_5_rect
+          video_clip_excludes_audio: video_clip_excludes_audio
+          duplicate_of_id: duplicate_of_id
+          portrait_4_5_url: portrait_4_5_url
+          hdr: ""
+          created_at_on_client: created_at_on_client
+          video_file_name: video_file_name
+          width: width
+          is_live: is_live
+          location: location
+          source_id: source_id
+          user:
+            attribution_string: attribution_string
+            attribution_id: attribution_id
+            updated_at: updated_at
+            name: name
+            avatar_file_name: avatar_file_name
+            created_at: created_at
+            id: id
+            short_id: short_id
+            test_account: test_account
+            email: email
+            latest_app_version: latest_app_version
+            show_push_prompt: true
+        view_count: view_count
+        frame_id: frame_id
+      properties:
+        last_viewed_or_created_at:
+          type: string
+        view_count:
+          type: string
+        gesture_direction:
+          type: string
+        created_at:
+          type: string
+        live_photo_on_transition:
+          type: string
+        viewed_at:
+          type: string
+        id:
+          type: string
+        last_viewed_at:
+          type: string
+        last_shown_with_asset_id:
+          type: string
+        frame_id:
+          type: string
+        asset_id:
+          type: string
+        asset:
+          $ref: '#/components/schemas/Asset'
+      type: object
+    LoginRequestUser:
+      example:
+        password: password
+        email: email
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      required:
+      - email
+      - password
+      type: object
+    LoginRequest:
+      example:
+        identifier_for_vendor: identifier_for_vendor
+        client_device_id: client_device_id
+        app_identifier: app_identifier
+        locale: locale
+        user:
+          password: password
+          email: email
+      properties:
+        app_identifier:
+          type: string
+        client_device_id:
+          type: string
+        identifier_for_vendor:
+          type: string
+        locale:
+          type: string
+        user:
+          $ref: '#/components/schemas/LoginRequestUser'
+      required:
+      - app_identifier
+      - client_device_id
+      - identifier_for_vendor
+      - locale
+      - user
+      type: object
+    LoginResponse:
+      example:
+        result:
+          current_user:
+            attribution_string: attribution_string
+            avatar_file_name: avatar_file_name
+            created_at: created_at
+            verbose_logging_enabled: true
+            locale: locale
+            auto_upload_off: true
+            has_access_to_new_google_photos: true
+            features:
+            - id: id
+            - id: id
+            google_photos_disabled: google_photos_disabled
+            thanks_launched: true
+            attribution_id: attribution_id
+            billing_info: billing_info
+            smart_suggestions_off: true
+            updated_at: updated_at
+            smart_albums_off: true
+            charity_subscriptions_launched: true
+            tooltip_add_photos_seen: true
+            id: id
+            test_account: test_account
+            confirmed_email: confirmed_email
+            eligible_for_app_review_prompt: true
+            email: email
+            subscriptions_launched: true
+            live_photos_launched: true
+            tooltip_added_photos_seen: true
+            tooltip_settings_seen: true
+            admin_account: admin_account
+            short_id: short_id
+            show_push_prompt: true
+            unconfirmed_email: unconfirmed_email
+            has_frame: true
+            recurly_account_code: recurly_account_code
+            tooltip_gestures_seen: true
+            current_source_id: current_source_id
+            name: name
+            tooltip_inbox_seen: true
+            tooltip_manage_frames_seen: true
+            auth_token: auth_token
+            latest_app_version: latest_app_version
+            print_subscriptions_launched: true
+            warn_smart_albums_deprecated: true
+      properties:
+        result:
+          $ref: '#/components/schemas/LoginResponse_result'
+      type: object
+    Metadata:
+      example:
+        date: date
+        attribution: attribution
+        location: location
+        pair_reasons: pair_reasons
+      properties:
+        attribution:
+          type: string
+        date:
+          type: string
+        location:
+          type: string
+        pair_reasons:
+          type: string
+      type: object
+    User:
+      example:
+        attribution_string: attribution_string
+        attribution_id: attribution_id
+        updated_at: updated_at
+        name: name
+        avatar_file_name: avatar_file_name
+        created_at: created_at
+        id: id
+        short_id: short_id
+        test_account: test_account
+        email: email
+        latest_app_version: latest_app_version
+        show_push_prompt: true
+      properties:
+        id:
+          type: string
+        short_id:
+          type: string
+        test_account:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        latest_app_version:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        attribution_id:
+          type: string
+        attribution_string:
+          type: string
+        show_push_prompt:
+          type: boolean
+        avatar_file_name:
+          type: string
+      type: object
+    LoginResponse_result:
+      example:
+        current_user:
+          attribution_string: attribution_string
+          avatar_file_name: avatar_file_name
+          created_at: created_at
+          verbose_logging_enabled: true
+          locale: locale
+          auto_upload_off: true
+          has_access_to_new_google_photos: true
+          features:
+          - id: id
+          - id: id
+          google_photos_disabled: google_photos_disabled
+          thanks_launched: true
+          attribution_id: attribution_id
+          billing_info: billing_info
+          smart_suggestions_off: true
+          updated_at: updated_at
+          smart_albums_off: true
+          charity_subscriptions_launched: true
+          tooltip_add_photos_seen: true
+          id: id
+          test_account: test_account
+          confirmed_email: confirmed_email
+          eligible_for_app_review_prompt: true
+          email: email
+          subscriptions_launched: true
+          live_photos_launched: true
+          tooltip_added_photos_seen: true
+          tooltip_settings_seen: true
+          admin_account: admin_account
+          short_id: short_id
+          show_push_prompt: true
+          unconfirmed_email: unconfirmed_email
+          has_frame: true
+          recurly_account_code: recurly_account_code
+          tooltip_gestures_seen: true
+          current_source_id: current_source_id
+          name: name
+          tooltip_inbox_seen: true
+          tooltip_manage_frames_seen: true
+          auth_token: auth_token
+          latest_app_version: latest_app_version
+          print_subscriptions_launched: true
+          warn_smart_albums_deprecated: true
+      properties:
+        current_user:
+          $ref: '#/components/schemas/CurrentUser'
+      type: object
+  securitySchemes:
+    TokenAuth:
+      in: header
+      name: x-token-auth
+      type: apiKey
+    UserId:
+      in: header
+      name: x-user-id
+      type: apiKey

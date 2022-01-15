@@ -1,0 +1,12 @@
+type: object
+properties:
+  assets:
+    type: array
+    items:
+      $ref: '../schema/asset.yaml'
+  metadata:
+    $ref: '../schema/metadata.yaml'
+  message:
+    type: string
+  stick_for:
+    type: string

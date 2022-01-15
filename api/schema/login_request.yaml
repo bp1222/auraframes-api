@@ -1,0 +1,18 @@
+type: object
+required:
+  - app_identifier 
+  - client_device_id
+  - identifier_for_vendor
+  - locale
+  - user
+properties:
+  app_identifier:
+    type: string
+  client_device_id:
+    type: string
+  identifier_for_vendor:
+    type: string
+  locale:
+    type: string
+  user:
+    $ref: '../schema/login_request_user.yaml'

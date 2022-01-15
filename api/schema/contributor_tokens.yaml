@@ -1,0 +1,16 @@
+type: object
+properties:
+  email:
+    type: string
+  phone_number:
+    type: string
+  expires_at:
+    type: string
+  created_at:
+    type: string
+  updated_at:
+    type: string
+  frame_id:
+    type: string
+  contributor_name:
+    type: string

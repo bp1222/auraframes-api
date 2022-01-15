@@ -1,0 +1,86 @@
+type: object
+properties:
+  admin_account:
+    type: string
+  attribution_id:
+    type: string
+  attribution_string:
+    type: string
+  auth_token:
+    type: string
+  auto_upload_off:
+    type: boolean
+  avatar_file_name:
+    type: string
+  billing_info:
+    type: string
+  charity_subscriptions_launched:
+    type: boolean
+  confirmed_email:
+    type: string
+  created_at:
+    type: string
+  current_source_id:
+    type: string
+  eligible_for_app_review_prompt:
+    type: boolean
+  email:
+    type: string
+  features:
+    type: array
+    items:
+      $ref: '../schema/features.yaml'
+  google_photos_disabled:
+    type: string
+  has_access_to_new_google_photos:
+    type: boolean
+  has_frame:
+    type: boolean
+  id:
+    type: string
+  latest_app_version:
+    type: string
+  live_photos_launched:
+    type: boolean
+  locale:
+    type: string
+  name:
+    type: string
+  print_subscriptions_launched:
+    type: boolean
+  recurly_account_code:
+    type: string
+  short_id:
+    type: string
+  show_push_prompt:
+    type: boolean
+  smart_albums_off:
+    type: boolean
+  smart_suggestions_off:
+    type: boolean
+  subscriptions_launched:
+    type: boolean
+  test_account:
+    type: string
+  thanks_launched:
+    type: boolean
+  tooltip_add_photos_seen:
+    type: boolean
+  tooltip_added_photos_seen:
+    type: boolean
+  tooltip_gestures_seen:
+    type: boolean
+  tooltip_inbox_seen:
+    type: boolean
+  tooltip_manage_frames_seen:
+    type: boolean
+  tooltip_settings_seen:
+    type: boolean
+  unconfirmed_email:
+    type: string
+  updated_at:
+    type: string
+  verbose_logging_enabled:
+    type: boolean
+  warn_smart_albums_deprecated:
+    type: boolean

@@ -1,0 +1,26 @@
+type: object
+properties:
+  id:
+    type: string
+  short_id:
+    type: string
+  test_account:
+    type: string
+  created_at:
+    type: string
+  updated_at:
+    type: string
+  latest_app_version:
+    type: string
+  name:
+    type: string
+  email:
+    type: string
+  attribution_id:
+    type: string
+  attribution_string:
+    type: string
+  show_push_prompt:
+    type: boolean 
+  avatar_file_name:
+    type: string

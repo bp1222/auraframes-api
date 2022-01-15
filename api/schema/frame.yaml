@@ -1,0 +1,156 @@
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  user_id:
+    type: string
+  software_version:
+    type: string
+  build_version:
+    type: string
+  hw_android_version:
+    type: string
+  created_at:
+    type: string
+  updated_at:
+    type: string
+  handled_at:
+    type: string
+  deleted_at:
+    type: string
+  updated_at_on_client:
+    type: string
+  last_impression_at:
+    type: string
+  orientation:
+    type: string
+  auto_brightness:
+    type: boolean
+  min_brightness:
+    type: string
+  max_brightness:
+    type: string
+  brightness:
+    type: string
+  sense_motion:
+    type: boolean
+  default_speed:
+    type: string
+  slideshow_interval:
+    type: string
+  slideshow_auto:
+    type: boolean
+  digits:
+    type: string
+  contributor_tokens:
+    type: array
+    items:
+      $ref: '../schema/contributor_tokens.yaml'
+  hw_serial:
+    type: string
+  matting_color:
+    type: string
+  trim_color:
+    type: string
+  is_handling:
+    type: boolean
+  calibrations_last_modified_at:
+    type: string
+  gestures_on:
+    type: boolean
+  portrait_pairing_off:
+    type: string
+  live_photos_on:
+    type: boolean
+  auto_processed_playlist_ids:
+    type: array
+    items:
+      type: string
+  time_zone:
+    type: string
+  wifi_network:
+    type: string
+  cold_boot_at:
+    type: string
+  is_charity_water_frame:
+    type: boolean
+  num_assets:
+    type: string
+  thanks_on:
+    type: boolean
+  frame_queue_url:
+    type: string
+  client_queue_url:
+    type: string
+  scheduled_display_sleep:
+    type: boolean
+  scheduled_display_on_at:
+    type: string
+  scheduled_display_off_at:
+    type: string
+  forced_wifi_state:
+    type: string
+  forced_wifi_recipient_email:
+    type: string
+  is_analog_frame:
+    type: boolean
+  control_type:
+    type: string
+  display_aspect_ratio:
+    type: string
+  has_claimable_gift:
+    type: boolean
+  gift_billing_hint:
+    type: string
+  locale:
+    type: string
+  frame_type:
+    type: string
+  description:
+    type: string
+  representative_asset_id:
+    type: string
+  sort_mode:
+    type: string
+  email_address:
+    type: string
+  features:
+    type: array
+    items:
+      type: string
+  volume:
+    type: string
+  user:
+    $ref: '../schema/user.yaml'
+  playlists:
+    type: array
+    items:
+      type: string
+  last_feed_item:
+    $ref: '../schema/feed_item.yaml'
+  last_impression:
+    $ref: '../schema/impression.yaml'
+  recent_assets:
+    type: array
+    items:
+      $ref: '../schema/asset.yaml'
+  contributors:
+    type: array
+    items:
+      $ref: '../schema/user.yaml'
+  frame_environment:
+    $ref: '../schema/frame_environment.yaml'
+  current_print_set:
+    type: string
+  first_print_set:
+    type: string
+  child_albums:
+    type: array
+    items:
+      type: string
+  smart_adds:
+    type: array
+    items:
+      type: string

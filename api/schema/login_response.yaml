@@ -1,0 +1,7 @@
+type: object
+properties:
+  result:
+   type: object
+   properties:
+      current_user:
+        $ref: '../schema/current_user.yaml'

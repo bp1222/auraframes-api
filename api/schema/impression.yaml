@@ -1,0 +1,26 @@
+type: object
+properties:
+  last_viewed_or_created_at:
+    type: string
+  view_count:
+    type: string
+  gesture_direction:
+    type: string
+  created_at:
+    type: string
+  live_photo_on_transition:
+    type: string
+  viewed_at:
+    type: string
+  id:
+    type: string
+  last_viewed_at:
+    type: string
+  last_shown_with_asset_id:
+    type: string
+  frame_id:
+    type: string
+  asset_id:
+    type: string
+  asset:
+    $ref: '../schema/asset.yaml'

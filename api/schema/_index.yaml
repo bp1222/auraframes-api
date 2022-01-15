@@ -1,0 +1,28 @@
+Asset:
+  $ref: './asset.yaml'
+ContributorTokens:
+  $ref: './contributor_tokens.yaml'
+CurrentUser:
+  $ref: './current_user.yaml'
+Features:
+  $ref: './features.yaml'
+FeedItem:
+  $ref: './feed_item.yaml'
+FrameEnvironment:
+  $ref: './frame_environment.yaml'
+Frame:
+  $ref: './frame.yaml'
+Frames:
+  $ref: './frames.yaml'
+Impression:
+  $ref: './impression.yaml'
+LoginRequestUser:
+  $ref: './login_request_user.yaml'
+LoginRequest:
+  $ref: './login_request.yaml'
+LoginResponse:
+  $ref: './login_response.yaml'
+Metadata:
+  $ref: './metadata.yaml'
+User:
+  $ref: './user.yaml'

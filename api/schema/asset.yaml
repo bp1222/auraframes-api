@@ -1,0 +1,120 @@
+type: object
+properties:
+  id:
+    type: string
+  user_id:
+    type: string
+  thumbnail_url:
+    type: string
+  portrait_url:
+    type: string
+  landscape_url:
+    type: string
+  landscape_16_10_url:
+    type: string
+  portrait_4_5_url:
+    type: string
+  video_url:
+    type: string
+  landscape_rect:
+    type: string
+  portrait_rect:
+    type: string
+  user_landscape_rect:
+    type: string
+  user_portrait_rect:
+    type: string
+  auto_landscape_16_10_rect:
+    type: string
+  user_landscape_16_10_rect:
+    type: string
+  auto_portrait_4_5_rect:
+    type: string
+  user_portrait_4_5_rect:
+    type: string
+  exif_orientation:
+    type: string
+  handled_at:
+    type: string
+  uploaded_at:
+    type: string
+  good_resolution:
+    type: bool
+  source_id:
+    type: string
+  duplicate_of_id:
+    type: string
+  rotation_cw:
+    type: string
+  location_name:
+    type: string
+  md5_hash:
+    type: string
+  is_subscription:
+    type: boolean
+  glaciered_at:
+    type: string
+  unglacierable:
+    type: bool
+  duration:
+    type: string
+  live_photo_off:
+    type: string
+  local_identifier:
+    type: string
+  created_at_on_client:
+    type: string
+  selected:
+    type: bool
+  file_name:
+    type: string
+  raw_file_name:
+    type: string
+  video_file_name:
+    type: string
+  width:
+    type: string
+  height:
+    type: string
+  taken_at:
+    type: string
+  horizontal_accuracy:
+    type: string
+  favorite:
+    type: bool
+  orientation:
+    type: string
+  hdr:
+    type: bool
+  panorama:
+    type: bool
+  is_live:
+    type: string
+  burst_id:
+    type: string
+  burst_selection_types:
+    type: string
+  represents_burst:
+    type: string
+  data_uti:
+    type: string
+  original_file_name:
+    type: string
+  upload_priority:
+    type: string
+  ios_media_subtypes:
+    type: string
+  taken_at_user_override_at:
+    type: string
+  duration_unclipped:
+    type: string
+  video_clip_start:
+    type: string
+  video_clip_excludes_audio:
+    type: string
+  video_clipped_by_user_at:
+    type: string
+  location:
+    type: string
+  user:
+    $ref: '../schema/user.yaml'

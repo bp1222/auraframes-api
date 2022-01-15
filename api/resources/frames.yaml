@@ -1,0 +1,19 @@
+get:
+  tags:
+    - frames
+  summary: Access to an Aura Frame
+  operationId: getFrames
+  security:
+    - sessionId: []
+  parameters:
+    - name: include_shared_albums
+      in: query
+      schema:
+        type: string
+  responses:
+    200:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '../schema/frames.yaml'

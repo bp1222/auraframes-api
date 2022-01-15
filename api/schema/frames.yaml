@@ -1,0 +1,6 @@
+type: object
+properties:
+  frames:
+    type: array
+    items:
+      $ref: '../schema/frame.yaml'

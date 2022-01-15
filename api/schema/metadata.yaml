@@ -1,0 +1,10 @@
+type: object
+properties:
+  attribution:
+    type: string
+  date:
+    type: string
+  location:
+    type: string
+  pair_reasons:
+    type: string

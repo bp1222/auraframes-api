@@ -1,0 +1,27 @@
+post:
+  tags:
+    - auth
+  summary: Login to Aura Frames
+  operationId: login
+  parameters:
+    - name: x-device-identifier
+      in: header
+      schema:
+        type: string
+    - name: x-client-device-id
+      in: header
+      schema:
+        type: string
+  requestBody:
+    description: Login Information
+    content:
+      application/json:
+        schema:
+          $ref: '../schema/login_request.yaml'
+  responses:
+    200:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '../schema/login_response.yaml'

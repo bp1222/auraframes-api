@@ -1,0 +1,42 @@
+openapi: 3.0.1
+info:
+  description: Reverse Engineered API for Aura Frames
+  version: 0.0.1
+  title: Aura Frame API - Unofficial
+  contact:
+    email: dave@mudsite.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+tags:
+- name: auth
+  description: Authentication
+- name: frames
+  description: Frames
+
+paths:
+  /login.json:
+    $ref: './resources/login.yaml'
+  /frames.json:
+    $ref: './resources/frames.yaml'
+
+servers:
+  - url: https://api.pushd.com/v5
+
+components:
+  schemas:
+    $ref: './schema/_index.yaml'
+  securitySchemes:
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: x-token-auth
+    UserId:
+      type: apiKey
+      in: header
+      name: x-user-id
+
+security:
+  - TokenAuth: []
+    UserId: []
