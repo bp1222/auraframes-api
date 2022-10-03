@@ -17,7 +17,7 @@ import (
 
 // FeedItem struct for FeedItem
 type FeedItem struct {
-	Assets *[]Asset `json:"assets,omitempty"`
+	Assets []Asset `json:"assets,omitempty"`
 	Metadata *Metadata `json:"metadata,omitempty"`
 	Message *string `json:"message,omitempty"`
 	StickFor *string `json:"stick_for,omitempty"`
@@ -46,12 +46,12 @@ func (o *FeedItem) GetAssets() []Asset {
 		var ret []Asset
 		return ret
 	}
-	return *o.Assets
+	return o.Assets
 }
 
 // GetAssetsOk returns a tuple with the Assets field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FeedItem) GetAssetsOk() (*[]Asset, bool) {
+func (o *FeedItem) GetAssetsOk() ([]Asset, bool) {
 	if o == nil || o.Assets == nil {
 		return nil, false
 	}
@@ -69,7 +69,7 @@ func (o *FeedItem) HasAssets() bool {
 
 // SetAssets gets a reference to the given []Asset and assigns it to the Assets field.
 func (o *FeedItem) SetAssets(v []Asset) {
-	o.Assets = &v
+	o.Assets = v
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.

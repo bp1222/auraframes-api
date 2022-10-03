@@ -32,8 +32,8 @@ func main() {
     loginRequest := *openapiclient.NewLoginRequest("AppIdentifier_example", "ClientDeviceId_example", "IdentifierForVendor_example", "Locale_example", *openapiclient.NewLoginRequestUser("Email_example", "Password_example")) // LoginRequest | Login Information (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthApi.Login(context.Background()).XDeviceIdentifier(xDeviceIdentifier).XClientDeviceId(xClientDeviceId).LoginRequest(loginRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthApi.Login(context.Background()).XDeviceIdentifier(xDeviceIdentifier).XClientDeviceId(xClientDeviceId).LoginRequest(loginRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthApi.Login``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

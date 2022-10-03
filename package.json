@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@apidevtools/swagger-cli": "^4.0",
+    "@openapitools/openapi-generator-cli": "^2.5"
+  }
+}

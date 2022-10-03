@@ -5,7 +5,7 @@ This API Currently supports simplistic data access.  Accessing your frames, asse
 
 ## Installation
 ### Golang
-    go get github.com/bp1222/auraframes-api/go
+    go get github.com/bp1222/auraframes-api/auraframes
 
 ## Language Documentation
 ### [Golang](go/README.md)
@@ -14,8 +14,7 @@ This API Currently supports simplistic data access.  Accessing your frames, asse
 To build the API you need to install `swagger-cli` and `openapi-generator`
 
 ### MacOS
-    npm install -g swagger-cli
-    brew install openapi-generatorur
+    npm install
 
 
 ## Notice
@@ -39,7 +38,7 @@ import (
 	"path/filepath"
 	"strings"
 
-    auraframes "github.com/bp1222/auraframes-api/go"
+    "github.com/bp1222/auraframes-api/auraframes"
 )
 
 var (

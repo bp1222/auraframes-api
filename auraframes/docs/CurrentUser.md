@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **CurrentSourceId** | Pointer to **string** |  | [optional] 
 **EligibleForAppReviewPrompt** | Pointer to **bool** |  | [optional] 
 **Email** | Pointer to **string** |  | [optional] 
-**Features** | Pointer to [**[]Features**](Features.md) |  | [optional] 
+**Features** | Pointer to **[]string** |  | [optional] 
 **GooglePhotosDisabled** | Pointer to **string** |  | [optional] 
 **HasAccessToNewGooglePhotos** | Pointer to **bool** |  | [optional] 
 **HasFrame** | Pointer to **bool** |  | [optional] 
@@ -392,20 +392,20 @@ HasEmail returns a boolean if a field has been set.
 
 ### GetFeatures
 
-`func (o *CurrentUser) GetFeatures() []Features`
+`func (o *CurrentUser) GetFeatures() []string`
 
 GetFeatures returns the Features field if non-nil, zero value otherwise.
 
 ### GetFeaturesOk
 
-`func (o *CurrentUser) GetFeaturesOk() (*[]Features, bool)`
+`func (o *CurrentUser) GetFeaturesOk() (*[]string, bool)`
 
 GetFeaturesOk returns a tuple with the Features field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFeatures
 
-`func (o *CurrentUser) SetFeatures(v []Features)`
+`func (o *CurrentUser) SetFeatures(v []string)`
 
 SetFeatures sets Features field to given value.
 

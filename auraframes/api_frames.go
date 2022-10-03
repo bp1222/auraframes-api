@@ -13,23 +13,34 @@ package auraframes
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
+
+type FramesApi interface {
+
+	/*
+	GetFrames Access to an Aura Frame
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetFramesRequest
+	*/
+	GetFrames(ctx context.Context) ApiGetFramesRequest
+
+	// GetFramesExecute executes the request
+	//  @return Frames
+	GetFramesExecute(r ApiGetFramesRequest) (*Frames, *http.Response, error)
+}
 
 // FramesApiService FramesApi service
 type FramesApiService service
 
 type ApiGetFramesRequest struct {
-	ctx _context.Context
-	ApiService *FramesApiService
+	ctx context.Context
+	ApiService FramesApi
 	includeSharedAlbums *string
 }
 
@@ -38,17 +49,17 @@ func (r ApiGetFramesRequest) IncludeSharedAlbums(includeSharedAlbums string) Api
 	return r
 }
 
-func (r ApiGetFramesRequest) Execute() (Frames, *_nethttp.Response, error) {
+func (r ApiGetFramesRequest) Execute() (*Frames, *http.Response, error) {
 	return r.ApiService.GetFramesExecute(r)
 }
 
 /*
 GetFrames Access to an Aura Frame
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetFramesRequest
 */
-func (a *FramesApiService) GetFrames(ctx _context.Context) ApiGetFramesRequest {
+func (a *FramesApiService) GetFrames(ctx context.Context) ApiGetFramesRequest {
 	return ApiGetFramesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -57,24 +68,24 @@ func (a *FramesApiService) GetFrames(ctx _context.Context) ApiGetFramesRequest {
 
 // Execute executes the request
 //  @return Frames
-func (a *FramesApiService) GetFramesExecute(r ApiGetFramesRequest) (Frames, *_nethttp.Response, error) {
+func (a *FramesApiService) GetFramesExecute(r ApiGetFramesRequest) (*Frames, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  Frames
+		localVarReturnValue  *Frames
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FramesApiService.GetFrames")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/frames.json"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.includeSharedAlbums != nil {
 		localVarQueryParams.Add("include_shared_albums", parameterToString(*r.includeSharedAlbums, ""))
@@ -134,15 +145,15 @@ func (a *FramesApiService) GetFramesExecute(r ApiGetFramesRequest) (Frames, *_ne
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -151,7 +162,7 @@ func (a *FramesApiService) GetFramesExecute(r ApiGetFramesRequest) (Frames, *_ne
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

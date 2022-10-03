@@ -10,7 +10,6 @@ docs/Asset.md
 docs/AuthApi.md
 docs/ContributorTokens.md
 docs/CurrentUser.md
-docs/Features.md
 docs/FeedItem.md
 docs/Frame.md
 docs/FrameEnvironment.md
@@ -29,7 +28,6 @@ go.sum
 model_asset.go
 model_contributor_tokens.go
 model_current_user.go
-model_features.go
 model_feed_item.go
 model_frame.go
 model_frame_environment.go

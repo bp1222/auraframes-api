@@ -4,8 +4,6 @@ ContributorTokens:
   $ref: './contributor_tokens.yaml'
 CurrentUser:
   $ref: './current_user.yaml'
-Features:
-  $ref: './features.yaml'
 FeedItem:
   $ref: './feed_item.yaml'
 FrameEnvironment:

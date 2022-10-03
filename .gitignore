@@ -24,3 +24,13 @@ _testmain.go
 *.prof
 
 bundle.yaml
+
+package-lock.json
+.idea
+vendor
+node_modules
+
+# local dev
+main.go
+go.sum
+go.mod

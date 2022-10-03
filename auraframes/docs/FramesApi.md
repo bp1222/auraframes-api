@@ -30,8 +30,8 @@ func main() {
     includeSharedAlbums := "includeSharedAlbums_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.FramesApi.GetFrames(context.Background()).IncludeSharedAlbums(includeSharedAlbums).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.FramesApi.GetFrames(context.Background()).IncludeSharedAlbums(includeSharedAlbums).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FramesApi.GetFrames``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

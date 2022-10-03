@@ -17,6 +17,7 @@ import (
 
 // LoginResponse struct for LoginResponse
 type LoginResponse struct {
+	Error *bool `json:"error,omitempty"`
 	Result *LoginResponseResult `json:"result,omitempty"`
 }
 
@@ -35,6 +36,38 @@ func NewLoginResponse() *LoginResponse {
 func NewLoginResponseWithDefaults() *LoginResponse {
 	this := LoginResponse{}
 	return &this
+}
+
+// GetError returns the Error field value if set, zero value otherwise.
+func (o *LoginResponse) GetError() bool {
+	if o == nil || o.Error == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Error
+}
+
+// GetErrorOk returns a tuple with the Error field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoginResponse) GetErrorOk() (*bool, bool) {
+	if o == nil || o.Error == nil {
+		return nil, false
+	}
+	return o.Error, true
+}
+
+// HasError returns a boolean if a field has been set.
+func (o *LoginResponse) HasError() bool {
+	if o != nil && o.Error != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetError gets a reference to the given bool and assigns it to the Error field.
+func (o *LoginResponse) SetError(v bool) {
+	o.Error = &v
 }
 
 // GetResult returns the Result field value if set, zero value otherwise.
@@ -71,6 +104,9 @@ func (o *LoginResponse) SetResult(v LoginResponseResult) {
 
 func (o LoginResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Error != nil {
+		toSerialize["error"] = o.Error
+	}
 	if o.Result != nil {
 		toSerialize["result"] = o.Result
 	}

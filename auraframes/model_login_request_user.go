@@ -53,7 +53,7 @@ func (o *LoginRequestUser) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value
 // and a boolean to check if the value has been set.
 func (o *LoginRequestUser) GetEmailOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Email, true
@@ -77,7 +77,7 @@ func (o *LoginRequestUser) GetPassword() string {
 // GetPasswordOk returns a tuple with the Password field value
 // and a boolean to check if the value has been set.
 func (o *LoginRequestUser) GetPasswordOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Password, true

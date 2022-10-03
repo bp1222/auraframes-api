@@ -59,7 +59,7 @@ func (o *LoginRequest) GetAppIdentifier() string {
 // GetAppIdentifierOk returns a tuple with the AppIdentifier field value
 // and a boolean to check if the value has been set.
 func (o *LoginRequest) GetAppIdentifierOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AppIdentifier, true
@@ -83,7 +83,7 @@ func (o *LoginRequest) GetClientDeviceId() string {
 // GetClientDeviceIdOk returns a tuple with the ClientDeviceId field value
 // and a boolean to check if the value has been set.
 func (o *LoginRequest) GetClientDeviceIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ClientDeviceId, true
@@ -107,7 +107,7 @@ func (o *LoginRequest) GetIdentifierForVendor() string {
 // GetIdentifierForVendorOk returns a tuple with the IdentifierForVendor field value
 // and a boolean to check if the value has been set.
 func (o *LoginRequest) GetIdentifierForVendorOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.IdentifierForVendor, true
@@ -131,7 +131,7 @@ func (o *LoginRequest) GetLocale() string {
 // GetLocaleOk returns a tuple with the Locale field value
 // and a boolean to check if the value has been set.
 func (o *LoginRequest) GetLocaleOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Locale, true
@@ -155,7 +155,7 @@ func (o *LoginRequest) GetUser() LoginRequestUser {
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
 func (o *LoginRequest) GetUserOk() (*LoginRequestUser, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.User, true

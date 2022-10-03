@@ -1,7 +1,9 @@
 type: object
 properties:
+  error:
+    type: boolean
   result:
-   type: object
-   properties:
+    type: object
+    properties:
       current_user:
         $ref: '../schema/current_user.yaml'

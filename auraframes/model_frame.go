@@ -39,7 +39,7 @@ type Frame struct {
 	SlideshowInterval *string `json:"slideshow_interval,omitempty"`
 	SlideshowAuto *bool `json:"slideshow_auto,omitempty"`
 	Digits *string `json:"digits,omitempty"`
-	ContributorTokens *[]ContributorTokens `json:"contributor_tokens,omitempty"`
+	ContributorTokens []ContributorTokens `json:"contributor_tokens,omitempty"`
 	HwSerial *string `json:"hw_serial,omitempty"`
 	MattingColor *string `json:"matting_color,omitempty"`
 	TrimColor *string `json:"trim_color,omitempty"`
@@ -48,7 +48,7 @@ type Frame struct {
 	GesturesOn *bool `json:"gestures_on,omitempty"`
 	PortraitPairingOff *string `json:"portrait_pairing_off,omitempty"`
 	LivePhotosOn *bool `json:"live_photos_on,omitempty"`
-	AutoProcessedPlaylistIds *[]string `json:"auto_processed_playlist_ids,omitempty"`
+	AutoProcessedPlaylistIds []string `json:"auto_processed_playlist_ids,omitempty"`
 	TimeZone *string `json:"time_zone,omitempty"`
 	WifiNetwork *string `json:"wifi_network,omitempty"`
 	ColdBootAt *string `json:"cold_boot_at,omitempty"`
@@ -73,19 +73,19 @@ type Frame struct {
 	RepresentativeAssetId *string `json:"representative_asset_id,omitempty"`
 	SortMode *string `json:"sort_mode,omitempty"`
 	EmailAddress *string `json:"email_address,omitempty"`
-	Features *[]string `json:"features,omitempty"`
+	Features []string `json:"features,omitempty"`
 	Volume *string `json:"volume,omitempty"`
 	User *User `json:"user,omitempty"`
-	Playlists *[]string `json:"playlists,omitempty"`
+	Playlists []string `json:"playlists,omitempty"`
 	LastFeedItem *FeedItem `json:"last_feed_item,omitempty"`
 	LastImpression *Impression `json:"last_impression,omitempty"`
-	RecentAssets *[]Asset `json:"recent_assets,omitempty"`
-	Contributors *[]User `json:"contributors,omitempty"`
+	RecentAssets []Asset `json:"recent_assets,omitempty"`
+	Contributors []User `json:"contributors,omitempty"`
 	FrameEnvironment *FrameEnvironment `json:"frame_environment,omitempty"`
 	CurrentPrintSet *string `json:"current_print_set,omitempty"`
 	FirstPrintSet *string `json:"first_print_set,omitempty"`
-	ChildAlbums *[]string `json:"child_albums,omitempty"`
-	SmartAdds *[]string `json:"smart_adds,omitempty"`
+	ChildAlbums []string `json:"child_albums,omitempty"`
+	SmartAdds []string `json:"smart_adds,omitempty"`
 }
 
 // NewFrame instantiates a new Frame object
@@ -815,12 +815,12 @@ func (o *Frame) GetContributorTokens() []ContributorTokens {
 		var ret []ContributorTokens
 		return ret
 	}
-	return *o.ContributorTokens
+	return o.ContributorTokens
 }
 
 // GetContributorTokensOk returns a tuple with the ContributorTokens field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Frame) GetContributorTokensOk() (*[]ContributorTokens, bool) {
+func (o *Frame) GetContributorTokensOk() ([]ContributorTokens, bool) {
 	if o == nil || o.ContributorTokens == nil {
 		return nil, false
 	}
@@ -838,7 +838,7 @@ func (o *Frame) HasContributorTokens() bool {
 
 // SetContributorTokens gets a reference to the given []ContributorTokens and assigns it to the ContributorTokens field.
 func (o *Frame) SetContributorTokens(v []ContributorTokens) {
-	o.ContributorTokens = &v
+	o.ContributorTokens = v
 }
 
 // GetHwSerial returns the HwSerial field value if set, zero value otherwise.
@@ -1103,12 +1103,12 @@ func (o *Frame) GetAutoProcessedPlaylistIds() []string {
 		var ret []string
 		return ret
 	}
-	return *o.AutoProcessedPlaylistIds
+	return o.AutoProcessedPlaylistIds
 }
 
 // GetAutoProcessedPlaylistIdsOk returns a tuple with the AutoProcessedPlaylistIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Frame) GetAutoProcessedPlaylistIdsOk() (*[]string, bool) {
+func (o *Frame) GetAutoProcessedPlaylistIdsOk() ([]string, bool) {
 	if o == nil || o.AutoProcessedPlaylistIds == nil {
 		return nil, false
 	}
@@ -1126,7 +1126,7 @@ func (o *Frame) HasAutoProcessedPlaylistIds() bool {
 
 // SetAutoProcessedPlaylistIds gets a reference to the given []string and assigns it to the AutoProcessedPlaylistIds field.
 func (o *Frame) SetAutoProcessedPlaylistIds(v []string) {
-	o.AutoProcessedPlaylistIds = &v
+	o.AutoProcessedPlaylistIds = v
 }
 
 // GetTimeZone returns the TimeZone field value if set, zero value otherwise.
@@ -1903,12 +1903,12 @@ func (o *Frame) GetFeatures() []string {
 		var ret []string
 		return ret
 	}
-	return *o.Features
+	return o.Features
 }
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Frame) GetFeaturesOk() (*[]string, bool) {
+func (o *Frame) GetFeaturesOk() ([]string, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -1926,7 +1926,7 @@ func (o *Frame) HasFeatures() bool {
 
 // SetFeatures gets a reference to the given []string and assigns it to the Features field.
 func (o *Frame) SetFeatures(v []string) {
-	o.Features = &v
+	o.Features = v
 }
 
 // GetVolume returns the Volume field value if set, zero value otherwise.
@@ -1999,12 +1999,12 @@ func (o *Frame) GetPlaylists() []string {
 		var ret []string
 		return ret
 	}
-	return *o.Playlists
+	return o.Playlists
 }
 
 // GetPlaylistsOk returns a tuple with the Playlists field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Frame) GetPlaylistsOk() (*[]string, bool) {
+func (o *Frame) GetPlaylistsOk() ([]string, bool) {
 	if o == nil || o.Playlists == nil {
 		return nil, false
 	}
@@ -2022,7 +2022,7 @@ func (o *Frame) HasPlaylists() bool {
 
 // SetPlaylists gets a reference to the given []string and assigns it to the Playlists field.
 func (o *Frame) SetPlaylists(v []string) {
-	o.Playlists = &v
+	o.Playlists = v
 }
 
 // GetLastFeedItem returns the LastFeedItem field value if set, zero value otherwise.
@@ -2095,12 +2095,12 @@ func (o *Frame) GetRecentAssets() []Asset {
 		var ret []Asset
 		return ret
 	}
-	return *o.RecentAssets
+	return o.RecentAssets
 }
 
 // GetRecentAssetsOk returns a tuple with the RecentAssets field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Frame) GetRecentAssetsOk() (*[]Asset, bool) {
+func (o *Frame) GetRecentAssetsOk() ([]Asset, bool) {
 	if o == nil || o.RecentAssets == nil {
 		return nil, false
 	}
@@ -2118,7 +2118,7 @@ func (o *Frame) HasRecentAssets() bool {
 
 // SetRecentAssets gets a reference to the given []Asset and assigns it to the RecentAssets field.
 func (o *Frame) SetRecentAssets(v []Asset) {
-	o.RecentAssets = &v
+	o.RecentAssets = v
 }
 
 // GetContributors returns the Contributors field value if set, zero value otherwise.
@@ -2127,12 +2127,12 @@ func (o *Frame) GetContributors() []User {
 		var ret []User
 		return ret
 	}
-	return *o.Contributors
+	return o.Contributors
 }
 
 // GetContributorsOk returns a tuple with the Contributors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Frame) GetContributorsOk() (*[]User, bool) {
+func (o *Frame) GetContributorsOk() ([]User, bool) {
 	if o == nil || o.Contributors == nil {
 		return nil, false
 	}
@@ -2150,7 +2150,7 @@ func (o *Frame) HasContributors() bool {
 
 // SetContributors gets a reference to the given []User and assigns it to the Contributors field.
 func (o *Frame) SetContributors(v []User) {
-	o.Contributors = &v
+	o.Contributors = v
 }
 
 // GetFrameEnvironment returns the FrameEnvironment field value if set, zero value otherwise.
@@ -2255,12 +2255,12 @@ func (o *Frame) GetChildAlbums() []string {
 		var ret []string
 		return ret
 	}
-	return *o.ChildAlbums
+	return o.ChildAlbums
 }
 
 // GetChildAlbumsOk returns a tuple with the ChildAlbums field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Frame) GetChildAlbumsOk() (*[]string, bool) {
+func (o *Frame) GetChildAlbumsOk() ([]string, bool) {
 	if o == nil || o.ChildAlbums == nil {
 		return nil, false
 	}
@@ -2278,7 +2278,7 @@ func (o *Frame) HasChildAlbums() bool {
 
 // SetChildAlbums gets a reference to the given []string and assigns it to the ChildAlbums field.
 func (o *Frame) SetChildAlbums(v []string) {
-	o.ChildAlbums = &v
+	o.ChildAlbums = v
 }
 
 // GetSmartAdds returns the SmartAdds field value if set, zero value otherwise.
@@ -2287,12 +2287,12 @@ func (o *Frame) GetSmartAdds() []string {
 		var ret []string
 		return ret
 	}
-	return *o.SmartAdds
+	return o.SmartAdds
 }
 
 // GetSmartAddsOk returns a tuple with the SmartAdds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Frame) GetSmartAddsOk() (*[]string, bool) {
+func (o *Frame) GetSmartAddsOk() ([]string, bool) {
 	if o == nil || o.SmartAdds == nil {
 		return nil, false
 	}
@@ -2310,7 +2310,7 @@ func (o *Frame) HasSmartAdds() bool {
 
 // SetSmartAdds gets a reference to the given []string and assigns it to the SmartAdds field.
 func (o *Frame) SetSmartAdds(v []string) {
-	o.SmartAdds = &v
+	o.SmartAdds = v
 }
 
 func (o Frame) MarshalJSON() ([]byte, error) {

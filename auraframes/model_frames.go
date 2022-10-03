@@ -17,7 +17,7 @@ import (
 
 // Frames struct for Frames
 type Frames struct {
-	Frames *[]Frame `json:"frames,omitempty"`
+	Frames []Frame `json:"frames,omitempty"`
 }
 
 // NewFrames instantiates a new Frames object
@@ -43,12 +43,12 @@ func (o *Frames) GetFrames() []Frame {
 		var ret []Frame
 		return ret
 	}
-	return *o.Frames
+	return o.Frames
 }
 
 // GetFramesOk returns a tuple with the Frames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Frames) GetFramesOk() (*[]Frame, bool) {
+func (o *Frames) GetFramesOk() ([]Frame, bool) {
 	if o == nil || o.Frames == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *Frames) HasFrames() bool {
 
 // SetFrames gets a reference to the given []Frame and assigns it to the Frames field.
 func (o *Frames) SetFrames(v []Frame) {
-	o.Frames = &v
+	o.Frames = v
 }
 
 func (o Frames) MarshalJSON() ([]byte, error) {

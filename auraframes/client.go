@@ -50,9 +50,9 @@ type APIClient struct {
 
 	// API Services
 
-	AuthApi *AuthApiService
+	AuthApi AuthApi
 
-	FramesApi *FramesApiService
+	FramesApi FramesApi
 }
 
 type service struct {
@@ -424,6 +424,13 @@ func addFile(w *multipart.Writer, fieldName, path string) error {
 // Prevent trying to import "fmt"
 func reportError(format string, a ...interface{}) error {
 	return fmt.Errorf(format, a...)
+}
+
+// A wrapper for strict JSON decoding
+func newStrictDecoder(data []byte) *json.Decoder {
+	dec := json.NewDecoder(bytes.NewBuffer(data))
+	dec.DisallowUnknownFields()
+	return dec
 }
 
 // Set request body from an interface{}

@@ -306,8 +306,8 @@ components:
         auto_upload_off: true
         has_access_to_new_google_photos: true
         features:
-        - id: id
-        - id: id
+        - features
+        - features
         google_photos_disabled: google_photos_disabled
         thanks_launched: true
         attribution_id: attribution_id
@@ -370,7 +370,7 @@ components:
           type: string
         features:
           items:
-            $ref: '#/components/schemas/Features'
+            type: string
           type: array
         google_photos_disabled:
           type: string
@@ -426,13 +426,6 @@ components:
           type: boolean
         warn_smart_albums_deprecated:
           type: boolean
-      type: object
-    Features:
-      example:
-        id: id
-      properties:
-        id:
-          type: string
       type: object
     FeedItem:
       example:
@@ -2474,8 +2467,8 @@ components:
             auto_upload_off: true
             has_access_to_new_google_photos: true
             features:
-            - id: id
-            - id: id
+            - features
+            - features
             google_photos_disabled: google_photos_disabled
             thanks_launched: true
             attribution_id: attribution_id
@@ -2509,7 +2502,10 @@ components:
             latest_app_version: latest_app_version
             print_subscriptions_launched: true
             warn_smart_albums_deprecated: true
+        error: true
       properties:
+        error:
+          type: boolean
         result:
           $ref: '#/components/schemas/LoginResponse_result'
       type: object
@@ -2580,8 +2576,8 @@ components:
           auto_upload_off: true
           has_access_to_new_google_photos: true
           features:
-          - id: id
-          - id: id
+          - features
+          - features
           google_photos_disabled: google_photos_disabled
           thanks_launched: true
           attribution_id: attribution_id

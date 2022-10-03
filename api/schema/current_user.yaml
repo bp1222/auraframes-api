@@ -29,7 +29,7 @@ properties:
   features:
     type: array
     items:
-      $ref: '../schema/features.yaml'
+      type: string
   google_photos_disabled:
     type: string
   has_access_to_new_google_photos:
